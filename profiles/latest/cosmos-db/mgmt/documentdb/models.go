@@ -36,12 +36,6 @@ const (
 	LastWriterWins ConflictResolutionMode = original.LastWriterWins
 )
 
-type ConnectorOffer = original.ConnectorOffer
-
-const (
-	Small ConnectorOffer = original.Small
-)
-
 type DataType = original.DataType
 
 const (
@@ -196,15 +190,6 @@ type DatabaseAccountsOfflineRegionFuture = original.DatabaseAccountsOfflineRegio
 type DatabaseAccountsOnlineRegionFuture = original.DatabaseAccountsOnlineRegionFuture
 type DatabaseAccountsPatchFuture = original.DatabaseAccountsPatchFuture
 type DatabaseAccountsRegenerateKeyFuture = original.DatabaseAccountsRegenerateKeyFuture
-type DatabaseAccountsUpdateCassandraKeyspaceThroughputFuture = original.DatabaseAccountsUpdateCassandraKeyspaceThroughputFuture
-type DatabaseAccountsUpdateCassandraTableThroughputFuture = original.DatabaseAccountsUpdateCassandraTableThroughputFuture
-type DatabaseAccountsUpdateGremlinDatabaseThroughputFuture = original.DatabaseAccountsUpdateGremlinDatabaseThroughputFuture
-type DatabaseAccountsUpdateGremlinGraphThroughputFuture = original.DatabaseAccountsUpdateGremlinGraphThroughputFuture
-type DatabaseAccountsUpdateMongoDBCollectionThroughputFuture = original.DatabaseAccountsUpdateMongoDBCollectionThroughputFuture
-type DatabaseAccountsUpdateMongoDBDatabaseThroughputFuture = original.DatabaseAccountsUpdateMongoDBDatabaseThroughputFuture
-type DatabaseAccountsUpdateSQLContainerThroughputFuture = original.DatabaseAccountsUpdateSQLContainerThroughputFuture
-type DatabaseAccountsUpdateSQLDatabaseThroughputFuture = original.DatabaseAccountsUpdateSQLDatabaseThroughputFuture
-type DatabaseAccountsUpdateTableThroughputFuture = original.DatabaseAccountsUpdateTableThroughputFuture
 type DatabaseClient = original.DatabaseClient
 type ErrorResponse = original.ErrorResponse
 type ExcludedPath = original.ExcludedPath
@@ -287,11 +272,6 @@ type TableCreateUpdateProperties = original.TableCreateUpdateProperties
 type TableListResult = original.TableListResult
 type TableProperties = original.TableProperties
 type TableResource = original.TableResource
-type Throughput = original.Throughput
-type ThroughputProperties = original.ThroughputProperties
-type ThroughputResource = original.ThroughputResource
-type ThroughputUpdateParameters = original.ThroughputUpdateParameters
-type ThroughputUpdateProperties = original.ThroughputUpdateProperties
 type UniqueKey = original.UniqueKey
 type UniqueKeyPolicy = original.UniqueKeyPolicy
 type Usage = original.Usage
@@ -390,9 +370,6 @@ func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
 }
 func PossibleConflictResolutionModeValues() []ConflictResolutionMode {
 	return original.PossibleConflictResolutionModeValues()
-}
-func PossibleConnectorOfferValues() []ConnectorOffer {
-	return original.PossibleConnectorOfferValues()
 }
 func PossibleDataTypeValues() []DataType {
 	return original.PossibleDataTypeValues()

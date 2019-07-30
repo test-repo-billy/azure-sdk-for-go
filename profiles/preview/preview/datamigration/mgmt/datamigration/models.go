@@ -618,7 +618,6 @@ const (
 	TaskTypeMigrateSQLServerAzureSQLDbSync                     TaskType = original.TaskTypeMigrateSQLServerAzureSQLDbSync
 	TaskTypeMigrateSQLServerSQLDb                              TaskType = original.TaskTypeMigrateSQLServerSQLDb
 	TaskTypeMigrateSsis                                        TaskType = original.TaskTypeMigrateSsis
-	TaskTypeProjectTaskProperties                              TaskType = original.TaskTypeProjectTaskProperties
 	TaskTypeServiceCheckOCI                                    TaskType = original.TaskTypeServiceCheckOCI
 	TaskTypeServiceInstallOCI                                  TaskType = original.TaskTypeServiceInstallOCI
 	TaskTypeServiceUploadOCI                                   TaskType = original.TaskTypeServiceUploadOCI

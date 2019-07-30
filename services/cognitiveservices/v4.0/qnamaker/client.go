@@ -1,6 +1,6 @@
 // Package qnamaker implements the Azure ARM Qnamaker service API version 4.0.
 //
-// An API for QnAMaker Service
+// An API for QnAMaker runtime
 package qnamaker
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
@@ -27,18 +27,18 @@ import (
 // BaseClient is the base client for Qnamaker.
 type BaseClient struct {
 	autorest.Client
-	Endpoint string
+	RuntimeEndpoint string
 }
 
 // New creates an instance of the BaseClient client.
-func New(endpoint string) BaseClient {
-	return NewWithoutDefaults(endpoint)
+func New(runtimeEndpoint string) BaseClient {
+	return NewWithoutDefaults(runtimeEndpoint)
 }
 
 // NewWithoutDefaults creates an instance of the BaseClient client.
-func NewWithoutDefaults(endpoint string) BaseClient {
+func NewWithoutDefaults(runtimeEndpoint string) BaseClient {
 	return BaseClient{
-		Client:   autorest.NewClientWithUserAgent(UserAgent()),
-		Endpoint: endpoint,
+		Client:          autorest.NewClientWithUserAgent(UserAgent()),
+		RuntimeEndpoint: runtimeEndpoint,
 	}
 }

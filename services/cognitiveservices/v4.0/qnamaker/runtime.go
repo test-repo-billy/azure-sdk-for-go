@@ -1,4 +1,4 @@
-package runtime
+package qnamaker
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,23 +25,23 @@ import (
 	"net/http"
 )
 
-// Client is the an API for QnAMaker runtime
-type Client struct {
+// RuntimeClient is the an API for QnAMaker runtime
+type RuntimeClient struct {
 	BaseClient
 }
 
-// NewClient creates an instance of the Client client.
-func NewClient(runtimeEndpoint string) Client {
-	return Client{New(runtimeEndpoint)}
+// NewRuntimeClient creates an instance of the RuntimeClient client.
+func NewRuntimeClient(runtimeEndpoint string) RuntimeClient {
+	return RuntimeClient{New(runtimeEndpoint)}
 }
 
 // GenerateAnswer sends the generate answer request.
 // Parameters:
 // kbID - knowledgebase id.
 // generateAnswerPayload - post body of the request.
-func (client Client) GenerateAnswer(ctx context.Context, kbID string, generateAnswerPayload QueryDTO) (result QnASearchResultList, err error) {
+func (client RuntimeClient) GenerateAnswer(ctx context.Context, kbID string, generateAnswerPayload QueryDTO) (result QnASearchResultList, err error) {
 	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/Client.GenerateAnswer")
+		ctx = tracing.StartSpan(ctx, fqdn+"/RuntimeClient.GenerateAnswer")
 		defer func() {
 			sc := -1
 			if result.Response.Response != nil {
@@ -52,27 +52,27 @@ func (client Client) GenerateAnswer(ctx context.Context, kbID string, generateAn
 	}
 	req, err := client.GenerateAnswerPreparer(ctx, kbID, generateAnswerPayload)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "runtime.Client", "GenerateAnswer", nil, "Failure preparing request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "GenerateAnswer", nil, "Failure preparing request")
 		return
 	}
 
 	resp, err := client.GenerateAnswerSender(req)
 	if err != nil {
 		result.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "runtime.Client", "GenerateAnswer", resp, "Failure sending request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "GenerateAnswer", resp, "Failure sending request")
 		return
 	}
 
 	result, err = client.GenerateAnswerResponder(resp)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "runtime.Client", "GenerateAnswer", resp, "Failure responding to request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "GenerateAnswer", resp, "Failure responding to request")
 	}
 
 	return
 }
 
 // GenerateAnswerPreparer prepares the GenerateAnswer request.
-func (client Client) GenerateAnswerPreparer(ctx context.Context, kbID string, generateAnswerPayload QueryDTO) (*http.Request, error) {
+func (client RuntimeClient) GenerateAnswerPreparer(ctx context.Context, kbID string, generateAnswerPayload QueryDTO) (*http.Request, error) {
 	urlParameters := map[string]interface{}{
 		"RuntimeEndpoint": client.RuntimeEndpoint,
 	}
@@ -92,14 +92,14 @@ func (client Client) GenerateAnswerPreparer(ctx context.Context, kbID string, ge
 
 // GenerateAnswerSender sends the GenerateAnswer request. The method will close the
 // http.Response Body if it receives an error.
-func (client Client) GenerateAnswerSender(req *http.Request) (*http.Response, error) {
+func (client RuntimeClient) GenerateAnswerSender(req *http.Request) (*http.Response, error) {
 	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
 	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GenerateAnswerResponder handles the response to the GenerateAnswer request. The method always
 // closes the http.Response Body.
-func (client Client) GenerateAnswerResponder(resp *http.Response) (result QnASearchResultList, err error) {
+func (client RuntimeClient) GenerateAnswerResponder(resp *http.Response) (result QnASearchResultList, err error) {
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),
@@ -114,9 +114,9 @@ func (client Client) GenerateAnswerResponder(resp *http.Response) (result QnASea
 // Parameters:
 // kbID - knowledgebase id.
 // trainPayload - post body of the request.
-func (client Client) Train(ctx context.Context, kbID string, trainPayload FeedbackRecordsDTO) (result autorest.Response, err error) {
+func (client RuntimeClient) Train(ctx context.Context, kbID string, trainPayload FeedbackRecordsDTO) (result autorest.Response, err error) {
 	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/Client.Train")
+		ctx = tracing.StartSpan(ctx, fqdn+"/RuntimeClient.Train")
 		defer func() {
 			sc := -1
 			if result.Response != nil {
@@ -127,27 +127,27 @@ func (client Client) Train(ctx context.Context, kbID string, trainPayload Feedba
 	}
 	req, err := client.TrainPreparer(ctx, kbID, trainPayload)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "runtime.Client", "Train", nil, "Failure preparing request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "Train", nil, "Failure preparing request")
 		return
 	}
 
 	resp, err := client.TrainSender(req)
 	if err != nil {
 		result.Response = resp
-		err = autorest.NewErrorWithError(err, "runtime.Client", "Train", resp, "Failure sending request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "Train", resp, "Failure sending request")
 		return
 	}
 
 	result, err = client.TrainResponder(resp)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "runtime.Client", "Train", resp, "Failure responding to request")
+		err = autorest.NewErrorWithError(err, "qnamaker.RuntimeClient", "Train", resp, "Failure responding to request")
 	}
 
 	return
 }
 
 // TrainPreparer prepares the Train request.
-func (client Client) TrainPreparer(ctx context.Context, kbID string, trainPayload FeedbackRecordsDTO) (*http.Request, error) {
+func (client RuntimeClient) TrainPreparer(ctx context.Context, kbID string, trainPayload FeedbackRecordsDTO) (*http.Request, error) {
 	urlParameters := map[string]interface{}{
 		"RuntimeEndpoint": client.RuntimeEndpoint,
 	}
@@ -167,14 +167,14 @@ func (client Client) TrainPreparer(ctx context.Context, kbID string, trainPayloa
 
 // TrainSender sends the Train request. The method will close the
 // http.Response Body if it receives an error.
-func (client Client) TrainSender(req *http.Request) (*http.Response, error) {
+func (client RuntimeClient) TrainSender(req *http.Request) (*http.Response, error) {
 	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
 	return autorest.SendWithSender(client, req, sd...)
 }
 
 // TrainResponder handles the response to the Train request. The method always
 // closes the http.Response Body.
-func (client Client) TrainResponder(resp *http.Response) (result autorest.Response, err error) {
+func (client RuntimeClient) TrainResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),

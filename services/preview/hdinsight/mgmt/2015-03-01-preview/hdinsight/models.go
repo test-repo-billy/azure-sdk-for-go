@@ -239,6 +239,10 @@ type ApplicationGetHTTPSEndpoint struct {
 	DestinationPort *int32 `json:"destinationPort,omitempty"`
 	// PublicPort - The public port to connect to.
 	PublicPort *int32 `json:"publicPort,omitempty"`
+	// SubDomainSuffix - The subdomain suffix of the application.
+	SubDomainSuffix *string `json:"subDomainSuffix,omitempty"`
+	// DisableGatewayAuth - Disable gateway authentication.
+	DisableGatewayAuth *bool `json:"disableGatewayAuth,omitempty"`
 }
 
 // ApplicationListResult result of the request to list cluster Applications. It contains a list of
@@ -1517,6 +1521,10 @@ type ProxyResource struct {
 
 // QuotaCapability the regional quota capability.
 type QuotaCapability struct {
+	// CoresUsed - The number of cores used in the subscription.
+	CoresUsed *int64 `json:"cores_used,omitempty"`
+	// MaxCoresAllowed - The number of cores that the subscription allowed.
+	MaxCoresAllowed *int64 `json:"max_cores_allowed,omitempty"`
 	// RegionalQuotas - The list of region quota capabilities.
 	RegionalQuotas *[]RegionalQuotaCapability `json:"regionalQuotas,omitempty"`
 }
@@ -1533,7 +1541,7 @@ type RegionalQuotaCapability struct {
 	RegionName *string `json:"region_name,omitempty"`
 	// CoresUsed - The number of cores used in the region.
 	CoresUsed *int64 `json:"cores_used,omitempty"`
-	// CoresAvailable - The number of courses available in the region.
+	// CoresAvailable - The number of cores available in the region.
 	CoresAvailable *int64 `json:"cores_available,omitempty"`
 }
 

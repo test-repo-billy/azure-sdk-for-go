@@ -11279,8 +11279,6 @@ type VirtualMachineScaleSetUpdateVMProfile struct {
 	ExtensionProfile *VirtualMachineScaleSetExtensionProfile `json:"extensionProfile,omitempty"`
 	// LicenseType - The license type, which is for bring your own license scenario.
 	LicenseType *string `json:"licenseType,omitempty"`
-	// BillingProfile - Specifies the billing related details of a low priority VMSS. <br><br>Minimum api-version: 2019-03-01.
-	BillingProfile *BillingProfile `json:"billingProfile,omitempty"`
 	// ScheduledEventsProfile - Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfile `json:"scheduledEventsProfile,omitempty"`
 }
@@ -11665,8 +11663,6 @@ type VirtualMachineScaleSetVMProfile struct {
 	Priority VirtualMachinePriorityTypes `json:"priority,omitempty"`
 	// EvictionPolicy - Specifies the eviction policy for virtual machines in a low priority scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
 	EvictionPolicy VirtualMachineEvictionPolicyTypes `json:"evictionPolicy,omitempty"`
-	// BillingProfile - Specifies the billing related details of a low priority VMSS. <br><br>Minimum api-version: 2019-03-01.
-	BillingProfile *BillingProfile `json:"billingProfile,omitempty"`
 	// ScheduledEventsProfile - Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfile `json:"scheduledEventsProfile,omitempty"`
 }

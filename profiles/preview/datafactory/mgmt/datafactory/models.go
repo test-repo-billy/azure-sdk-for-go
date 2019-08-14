@@ -150,6 +150,16 @@ const (
 	OnPremisesWithIfd DynamicsDeploymentType = original.OnPremisesWithIfd
 )
 
+type EventSubscriptionStatus = original.EventSubscriptionStatus
+
+const (
+	Deprovisioning EventSubscriptionStatus = original.Deprovisioning
+	Disabled       EventSubscriptionStatus = original.Disabled
+	Enabled        EventSubscriptionStatus = original.Enabled
+	Provisioning   EventSubscriptionStatus = original.Provisioning
+	Unknown        EventSubscriptionStatus = original.Unknown
+)
+
 type FtpAuthenticationType = original.FtpAuthenticationType
 
 const (
@@ -613,9 +623,9 @@ const (
 type TriggerRuntimeState = original.TriggerRuntimeState
 
 const (
-	Disabled TriggerRuntimeState = original.Disabled
-	Started  TriggerRuntimeState = original.Started
-	Stopped  TriggerRuntimeState = original.Stopped
+	TriggerRuntimeStateDisabled TriggerRuntimeState = original.TriggerRuntimeStateDisabled
+	TriggerRuntimeStateStarted  TriggerRuntimeState = original.TriggerRuntimeStateStarted
+	TriggerRuntimeStateStopped  TriggerRuntimeState = original.TriggerRuntimeStateStopped
 )
 
 type TumblingWindowFrequency = original.TumblingWindowFrequency
@@ -679,6 +689,7 @@ const (
 	TypeAzureBlobFSSink              TypeBasicCopySink = original.TypeAzureBlobFSSink
 	TypeAzureDataExplorerSink        TypeBasicCopySink = original.TypeAzureDataExplorerSink
 	TypeAzureDataLakeStoreSink       TypeBasicCopySink = original.TypeAzureDataLakeStoreSink
+	TypeAzureMySQLSink               TypeBasicCopySink = original.TypeAzureMySQLSink
 	TypeAzurePostgreSQLSink          TypeBasicCopySink = original.TypeAzurePostgreSQLSink
 	TypeAzureQueueSink               TypeBasicCopySink = original.TypeAzureQueueSink
 	TypeAzureSearchIndexSink         TypeBasicCopySink = original.TypeAzureSearchIndexSink
@@ -801,6 +812,7 @@ type TypeBasicDataset = original.TypeBasicDataset
 
 const (
 	TypeAmazonMWSObject                TypeBasicDataset = original.TypeAmazonMWSObject
+	TypeAmazonRedshiftTable            TypeBasicDataset = original.TypeAmazonRedshiftTable
 	TypeAmazonS3Object                 TypeBasicDataset = original.TypeAmazonS3Object
 	TypeAvro                           TypeBasicDataset = original.TypeAvro
 	TypeAzureBlob                      TypeBasicDataset = original.TypeAzureBlob
@@ -823,6 +835,7 @@ const (
 	TypeCouchbaseTable                 TypeBasicDataset = original.TypeCouchbaseTable
 	TypeCustomDataset                  TypeBasicDataset = original.TypeCustomDataset
 	TypeDataset                        TypeBasicDataset = original.TypeDataset
+	TypeDb2Table                       TypeBasicDataset = original.TypeDb2Table
 	TypeDelimitedText                  TypeBasicDataset = original.TypeDelimitedText
 	TypeDocumentDbCollection           TypeBasicDataset = original.TypeDocumentDbCollection
 	TypeDrillTable                     TypeBasicDataset = original.TypeDrillTable
@@ -1095,6 +1108,8 @@ type AmazonMWSSource = original.AmazonMWSSource
 type AmazonRedshiftLinkedService = original.AmazonRedshiftLinkedService
 type AmazonRedshiftLinkedServiceTypeProperties = original.AmazonRedshiftLinkedServiceTypeProperties
 type AmazonRedshiftSource = original.AmazonRedshiftSource
+type AmazonRedshiftTableDataset = original.AmazonRedshiftTableDataset
+type AmazonRedshiftTableDatasetTypeProperties = original.AmazonRedshiftTableDatasetTypeProperties
 type AmazonS3Dataset = original.AmazonS3Dataset
 type AmazonS3DatasetTypeProperties = original.AmazonS3DatasetTypeProperties
 type AmazonS3LinkedService = original.AmazonS3LinkedService
@@ -1168,6 +1183,7 @@ type AzureMariaDBSource = original.AzureMariaDBSource
 type AzureMariaDBTableDataset = original.AzureMariaDBTableDataset
 type AzureMySQLLinkedService = original.AzureMySQLLinkedService
 type AzureMySQLLinkedServiceTypeProperties = original.AzureMySQLLinkedServiceTypeProperties
+type AzureMySQLSink = original.AzureMySQLSink
 type AzureMySQLSource = original.AzureMySQLSource
 type AzureMySQLTableDataset = original.AzureMySQLTableDataset
 type AzureMySQLTableDatasetTypeProperties = original.AzureMySQLTableDatasetTypeProperties
@@ -1302,6 +1318,8 @@ type DatasetsClient = original.DatasetsClient
 type Db2LinkedService = original.Db2LinkedService
 type Db2LinkedServiceTypeProperties = original.Db2LinkedServiceTypeProperties
 type Db2Source = original.Db2Source
+type Db2TableDataset = original.Db2TableDataset
+type Db2TableDatasetTypeProperties = original.Db2TableDatasetTypeProperties
 type DeleteActivity = original.DeleteActivity
 type DeleteActivityTypeProperties = original.DeleteActivityTypeProperties
 type DelimitedTextDataset = original.DelimitedTextDataset
@@ -1549,6 +1567,7 @@ type NetezzaLinkedServiceTypeProperties = original.NetezzaLinkedServiceTypePrope
 type NetezzaPartitionSettings = original.NetezzaPartitionSettings
 type NetezzaSource = original.NetezzaSource
 type NetezzaTableDataset = original.NetezzaTableDataset
+type NetezzaTableDatasetTypeProperties = original.NetezzaTableDatasetTypeProperties
 type ODataLinkedService = original.ODataLinkedService
 type ODataLinkedServiceTypeProperties = original.ODataLinkedServiceTypeProperties
 type ODataResourceDataset = original.ODataResourceDataset
@@ -1805,9 +1824,12 @@ type TriggerResource = original.TriggerResource
 type TriggerRun = original.TriggerRun
 type TriggerRunsClient = original.TriggerRunsClient
 type TriggerRunsQueryResponse = original.TriggerRunsQueryResponse
+type TriggerSubscriptionOperationStatus = original.TriggerSubscriptionOperationStatus
 type TriggersClient = original.TriggersClient
 type TriggersStartFuture = original.TriggersStartFuture
 type TriggersStopFuture = original.TriggersStopFuture
+type TriggersSubscribeToEventsFuture = original.TriggersSubscribeToEventsFuture
+type TriggersUnsubscribeFromEventsFuture = original.TriggersUnsubscribeFromEventsFuture
 type TumblingWindowTrigger = original.TumblingWindowTrigger
 type TumblingWindowTriggerDependencyReference = original.TumblingWindowTriggerDependencyReference
 type TumblingWindowTriggerTypeProperties = original.TumblingWindowTriggerTypeProperties
@@ -2025,6 +2047,9 @@ func PossibleDynamicsAuthenticationTypeValues() []DynamicsAuthenticationType {
 }
 func PossibleDynamicsDeploymentTypeValues() []DynamicsDeploymentType {
 	return original.PossibleDynamicsDeploymentTypeValues()
+}
+func PossibleEventSubscriptionStatusValues() []EventSubscriptionStatus {
+	return original.PossibleEventSubscriptionStatusValues()
 }
 func PossibleFtpAuthenticationTypeValues() []FtpAuthenticationType {
 	return original.PossibleFtpAuthenticationTypeValues()

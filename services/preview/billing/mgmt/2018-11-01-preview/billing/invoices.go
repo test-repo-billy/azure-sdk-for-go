@@ -234,6 +234,43 @@ func (client InvoicesClient) ListByBillingAccountNameComplete(ctx context.Contex
 	return
 }
 
+// listByBillingAccountNameNextResults retrieves the next set of results, if any.
+func (client InvoicesClient) listByBillingAccountNameNextResults(ctx context.Context, lastResults InvoiceListResult) (result InvoiceListResult, err error) {
+	req, err := lastResults.invoiceListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.InvoicesClient", "listByBillingAccountNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByBillingAccountNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.InvoicesClient", "listByBillingAccountNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByBillingAccountNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.InvoicesClient", "listByBillingAccountNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByBillingAccountNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client InvoicesClient) ListByBillingAccountNameComplete(ctx context.Context, billingAccountName string, periodStartDate string, periodEndDate string) (result InvoiceListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/InvoicesClient.ListByBillingAccountName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByBillingAccountName(ctx, billingAccountName, periodStartDate, periodEndDate)
+	return
+}
+
 // ListByBillingProfile list of invoices for a billing profile.
 // Parameters:
 // billingAccountName - billing Account Id.

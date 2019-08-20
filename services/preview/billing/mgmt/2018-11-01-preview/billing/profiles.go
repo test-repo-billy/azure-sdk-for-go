@@ -313,6 +313,43 @@ func (client ProfilesClient) ListByBillingAccountNameComplete(ctx context.Contex
 	return
 }
 
+// listByBillingAccountNameNextResults retrieves the next set of results, if any.
+func (client ProfilesClient) listByBillingAccountNameNextResults(ctx context.Context, lastResults ProfileListResult) (result ProfileListResult, err error) {
+	req, err := lastResults.profileListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.ProfilesClient", "listByBillingAccountNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByBillingAccountNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.ProfilesClient", "listByBillingAccountNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByBillingAccountNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.ProfilesClient", "listByBillingAccountNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByBillingAccountNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client ProfilesClient) ListByBillingAccountNameComplete(ctx context.Context, billingAccountName string, expand string) (result ProfileListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ProfilesClient.ListByBillingAccountName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByBillingAccountName(ctx, billingAccountName, expand)
+	return
+}
+
 // Update the operation to update a billing profile.
 // Parameters:
 // billingAccountName - billing Account Id.

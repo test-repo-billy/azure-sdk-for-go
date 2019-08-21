@@ -495,6 +495,43 @@ func (client InvoiceSectionsClient) ListByBillingProfileNameComplete(ctx context
 	return
 }
 
+// listByBillingProfileNameNextResults retrieves the next set of results, if any.
+func (client InvoiceSectionsClient) listByBillingProfileNameNextResults(ctx context.Context, lastResults InvoiceSectionListResult) (result InvoiceSectionListResult, err error) {
+	req, err := lastResults.invoiceSectionListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByBillingProfileNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByBillingProfileNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByBillingProfileNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByBillingProfileNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByBillingProfileNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByBillingProfileNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client InvoiceSectionsClient) ListByBillingProfileNameComplete(ctx context.Context, billingAccountName string, billingProfileName string) (result InvoiceSectionListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/InvoiceSectionsClient.ListByBillingProfileName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByBillingProfileName(ctx, billingAccountName, billingProfileName)
+	return
+}
+
 // ListByCreateSubscriptionPermission lists all invoiceSections with create subscription permission for a user.
 // Parameters:
 // billingAccountName - billing Account Id.
@@ -571,6 +608,43 @@ func (client InvoiceSectionsClient) ListByCreateSubscriptionPermissionResponder(
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listByCreateSubscriptionPermissionNextResults retrieves the next set of results, if any.
+func (client InvoiceSectionsClient) listByCreateSubscriptionPermissionNextResults(ctx context.Context, lastResults InvoiceSectionListResult) (result InvoiceSectionListResult, err error) {
+	req, err := lastResults.invoiceSectionListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByCreateSubscriptionPermissionNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByCreateSubscriptionPermissionSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByCreateSubscriptionPermissionNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByCreateSubscriptionPermissionResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.InvoiceSectionsClient", "listByCreateSubscriptionPermissionNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByCreateSubscriptionPermissionComplete enumerates all values, automatically crossing page boundaries as required.
+func (client InvoiceSectionsClient) ListByCreateSubscriptionPermissionComplete(ctx context.Context, billingAccountName string, expand string) (result InvoiceSectionListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/InvoiceSectionsClient.ListByCreateSubscriptionPermission")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByCreateSubscriptionPermission(ctx, billingAccountName, expand)
 	return
 }
 

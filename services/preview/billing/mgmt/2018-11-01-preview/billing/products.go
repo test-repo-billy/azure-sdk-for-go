@@ -393,6 +393,43 @@ func (client ProductsClient) ListByInvoiceSectionNameComplete(ctx context.Contex
 	return
 }
 
+// listByInvoiceSectionNameNextResults retrieves the next set of results, if any.
+func (client ProductsClient) listByInvoiceSectionNameNextResults(ctx context.Context, lastResults ProductsListResult) (result ProductsListResult, err error) {
+	req, err := lastResults.productsListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.ProductsClient", "listByInvoiceSectionNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByInvoiceSectionNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.ProductsClient", "listByInvoiceSectionNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByInvoiceSectionNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.ProductsClient", "listByInvoiceSectionNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByInvoiceSectionNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client ProductsClient) ListByInvoiceSectionNameComplete(ctx context.Context, billingAccountName string, invoiceSectionName string, filter string) (result ProductsListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ProductsClient.ListByInvoiceSectionName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByInvoiceSectionName(ctx, billingAccountName, invoiceSectionName, filter)
+	return
+}
+
 // Transfer the operation to transfer a Product to another invoice section.
 // Parameters:
 // billingAccountName - billing Account Id.

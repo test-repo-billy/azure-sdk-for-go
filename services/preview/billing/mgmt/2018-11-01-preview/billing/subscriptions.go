@@ -274,6 +274,84 @@ func (client SubscriptionsClient) GetByCustomerNameResponder(resp *http.Response
 	return
 }
 
+// GetByCustomerName get a single billing subscription by name.
+// Parameters:
+// billingAccountName - billing Account Id.
+// customerName - customer Id.
+// billingSubscriptionName - billing Subscription Id.
+func (client SubscriptionsClient) GetByCustomerName(ctx context.Context, billingAccountName string, customerName string, billingSubscriptionName string) (result SubscriptionSummary, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/SubscriptionsClient.GetByCustomerName")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.GetByCustomerNamePreparer(ctx, billingAccountName, customerName, billingSubscriptionName)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "GetByCustomerName", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.GetByCustomerNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "GetByCustomerName", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.GetByCustomerNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "GetByCustomerName", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// GetByCustomerNamePreparer prepares the GetByCustomerName request.
+func (client SubscriptionsClient) GetByCustomerNamePreparer(ctx context.Context, billingAccountName string, customerName string, billingSubscriptionName string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"billingAccountName":      autorest.Encode("path", billingAccountName),
+		"billingSubscriptionName": autorest.Encode("path", billingSubscriptionName),
+		"customerName":            autorest.Encode("path", customerName),
+	}
+
+	const APIVersion = "2018-11-01-preview"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingSubscriptions/{billingSubscriptionName}", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// GetByCustomerNameSender sends the GetByCustomerName request. The method will close the
+// http.Response Body if it receives an error.
+func (client SubscriptionsClient) GetByCustomerNameSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// GetByCustomerNameResponder handles the response to the GetByCustomerName request. The method always
+// closes the http.Response Body.
+func (client SubscriptionsClient) GetByCustomerNameResponder(resp *http.Response) (result SubscriptionSummary, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
 // ListByBillingAccountName lists billing subscriptions by billing account name.
 // Parameters:
 // billingAccountName - billing Account Id.
@@ -765,6 +843,157 @@ func (client SubscriptionsClient) ListByCustomerNameComplete(ctx context.Context
 	return
 }
 
+// listByBillingProfileNameNextResults retrieves the next set of results, if any.
+func (client SubscriptionsClient) listByBillingProfileNameNextResults(ctx context.Context, lastResults SubscriptionsListResult) (result SubscriptionsListResult, err error) {
+	req, err := lastResults.subscriptionsListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByBillingProfileNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByBillingProfileNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByBillingProfileNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByBillingProfileNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByBillingProfileNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByBillingProfileNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client SubscriptionsClient) ListByBillingProfileNameComplete(ctx context.Context, billingAccountName string, billingProfileName string) (result SubscriptionsListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/SubscriptionsClient.ListByBillingProfileName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByBillingProfileName(ctx, billingAccountName, billingProfileName)
+	return
+}
+
+// ListByCustomerName lists billing subscription by customer name.
+// Parameters:
+// billingAccountName - billing Account Id.
+// customerName - customer Id.
+func (client SubscriptionsClient) ListByCustomerName(ctx context.Context, billingAccountName string, customerName string) (result SubscriptionsListResultPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/SubscriptionsClient.ListByCustomerName")
+		defer func() {
+			sc := -1
+			if result.slr.Response.Response != nil {
+				sc = result.slr.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.fn = client.listByCustomerNameNextResults
+	req, err := client.ListByCustomerNamePreparer(ctx, billingAccountName, customerName)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "ListByCustomerName", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListByCustomerNameSender(req)
+	if err != nil {
+		result.slr.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "ListByCustomerName", resp, "Failure sending request")
+		return
+	}
+
+	result.slr, err = client.ListByCustomerNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "ListByCustomerName", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListByCustomerNamePreparer prepares the ListByCustomerName request.
+func (client SubscriptionsClient) ListByCustomerNamePreparer(ctx context.Context, billingAccountName string, customerName string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"billingAccountName": autorest.Encode("path", billingAccountName),
+		"customerName":       autorest.Encode("path", customerName),
+	}
+
+	const APIVersion = "2018-11-01-preview"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingSubscriptions", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListByCustomerNameSender sends the ListByCustomerName request. The method will close the
+// http.Response Body if it receives an error.
+func (client SubscriptionsClient) ListByCustomerNameSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListByCustomerNameResponder handles the response to the ListByCustomerName request. The method always
+// closes the http.Response Body.
+func (client SubscriptionsClient) ListByCustomerNameResponder(resp *http.Response) (result SubscriptionsListResult, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listByCustomerNameNextResults retrieves the next set of results, if any.
+func (client SubscriptionsClient) listByCustomerNameNextResults(ctx context.Context, lastResults SubscriptionsListResult) (result SubscriptionsListResult, err error) {
+	req, err := lastResults.subscriptionsListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByCustomerNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByCustomerNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByCustomerNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByCustomerNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByCustomerNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByCustomerNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client SubscriptionsClient) ListByCustomerNameComplete(ctx context.Context, billingAccountName string, customerName string) (result SubscriptionsListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/SubscriptionsClient.ListByCustomerName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByCustomerName(ctx, billingAccountName, customerName)
+	return
+}
+
 // ListByInvoiceSectionName lists billing subscription by invoice section name.
 // Parameters:
 // billingAccountName - billing Account Id.
@@ -839,6 +1068,43 @@ func (client SubscriptionsClient) ListByInvoiceSectionNameResponder(resp *http.R
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listByInvoiceSectionNameNextResults retrieves the next set of results, if any.
+func (client SubscriptionsClient) listByInvoiceSectionNameNextResults(ctx context.Context, lastResults SubscriptionsListResult) (result SubscriptionsListResult, err error) {
+	req, err := lastResults.subscriptionsListResultPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByInvoiceSectionNameNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListByInvoiceSectionNameSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByInvoiceSectionNameNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListByInvoiceSectionNameResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "billing.SubscriptionsClient", "listByInvoiceSectionNameNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListByInvoiceSectionNameComplete enumerates all values, automatically crossing page boundaries as required.
+func (client SubscriptionsClient) ListByInvoiceSectionNameComplete(ctx context.Context, billingAccountName string, invoiceSectionName string) (result SubscriptionsListResultIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/SubscriptionsClient.ListByInvoiceSectionName")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListByInvoiceSectionName(ctx, billingAccountName, invoiceSectionName)
 	return
 }
 

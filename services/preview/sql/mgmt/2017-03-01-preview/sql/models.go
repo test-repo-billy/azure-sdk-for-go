@@ -2179,7 +2179,7 @@ type DatabaseBlobAuditingPolicyProperties struct {
 	// IsStorageSecondaryKeyInUse - Specifies whether storageAccountAccessKey value is the storage's secondary key.
 	IsStorageSecondaryKeyInUse *bool `json:"isStorageSecondaryKeyInUse,omitempty"`
 	// IsAzureMonitorTargetEnabled - Specifies whether audit events are sent to Azure Monitor.
-	// In order to send the events to Azure Monitor, specify 'state' as 'Enabled' and 'isAzureMonitorTargetEnabled' as true.
+	// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
 	//
 	// When using REST API to configure auditing, Diagnostic Settings with 'SQLSecurityAuditEvents' diagnostic logs category on the database should be also created.
 	// Note that for server level audit you should use the 'master' database as {databaseName}.
@@ -4674,7 +4674,7 @@ type ExtendedDatabaseBlobAuditingPolicyProperties struct {
 	// IsStorageSecondaryKeyInUse - Specifies whether storageAccountAccessKey value is the storage's secondary key.
 	IsStorageSecondaryKeyInUse *bool `json:"isStorageSecondaryKeyInUse,omitempty"`
 	// IsAzureMonitorTargetEnabled - Specifies whether audit events are sent to Azure Monitor.
-	// In order to send the events to Azure Monitor, specify 'state' as 'Enabled' and 'isAzureMonitorTargetEnabled' as true.
+	// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
 	//
 	// When using REST API to configure auditing, Diagnostic Settings with 'SQLSecurityAuditEvents' diagnostic logs category on the database should be also created.
 	// Note that for server level audit you should use the 'master' database as {databaseName}.
@@ -4864,7 +4864,7 @@ type ExtendedServerBlobAuditingPolicyProperties struct {
 	// IsStorageSecondaryKeyInUse - Specifies whether storageAccountAccessKey value is the storage's secondary key.
 	IsStorageSecondaryKeyInUse *bool `json:"isStorageSecondaryKeyInUse,omitempty"`
 	// IsAzureMonitorTargetEnabled - Specifies whether audit events are sent to Azure Monitor.
-	// In order to send the events to Azure Monitor, specify 'state' as 'Enabled' and 'isAzureMonitorTargetEnabled' as true.
+	// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
 	//
 	// When using REST API to configure auditing, Diagnostic Settings with 'SQLSecurityAuditEvents' diagnostic logs category on the database should be also created.
 	// Note that for server level audit you should use the 'master' database as {databaseName}.
@@ -11216,7 +11216,7 @@ type ServerBlobAuditingPolicyProperties struct {
 	// IsStorageSecondaryKeyInUse - Specifies whether storageAccountAccessKey value is the storage's secondary key.
 	IsStorageSecondaryKeyInUse *bool `json:"isStorageSecondaryKeyInUse,omitempty"`
 	// IsAzureMonitorTargetEnabled - Specifies whether audit events are sent to Azure Monitor.
-	// In order to send the events to Azure Monitor, specify 'state' as 'Enabled' and 'isAzureMonitorTargetEnabled' as true.
+	// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
 	//
 	// When using REST API to configure auditing, Diagnostic Settings with 'SQLSecurityAuditEvents' diagnostic logs category on the database should be also created.
 	// Note that for server level audit you should use the 'master' database as {databaseName}.

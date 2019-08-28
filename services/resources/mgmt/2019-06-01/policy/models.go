@@ -33,15 +33,17 @@ const fqdn = "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2019-06-
 type EnforcementMode string
 
 const (
-	// Default The policy effect is enforced during resource creation or update.
+	// Default ...
 	Default EnforcementMode = "Default"
-	// DoNotEnforce The policy effect is not enforced during resource creation or update.
+	// DoNotEnforce ...
 	DoNotEnforce EnforcementMode = "DoNotEnforce"
+	// NotSpecified ...
+	NotSpecified EnforcementMode = "NotSpecified"
 )
 
 // PossibleEnforcementModeValues returns an array of possible values for the EnforcementMode const type.
 func PossibleEnforcementModeValues() []EnforcementMode {
-	return []EnforcementMode{Default, DoNotEnforce}
+	return []EnforcementMode{Default, DoNotEnforce, NotSpecified}
 }
 
 // ResourceIdentityType enumerates the values for resource identity type.
@@ -63,17 +65,17 @@ func PossibleResourceIdentityTypeValues() []ResourceIdentityType {
 type Type string
 
 const (
-	// BuiltIn ...
-	BuiltIn Type = "BuiltIn"
-	// Custom ...
-	Custom Type = "Custom"
-	// NotSpecified ...
-	NotSpecified Type = "NotSpecified"
+	// TypeBuiltIn ...
+	TypeBuiltIn Type = "BuiltIn"
+	// TypeCustom ...
+	TypeCustom Type = "Custom"
+	// TypeNotSpecified ...
+	TypeNotSpecified Type = "NotSpecified"
 )
 
 // PossibleTypeValues returns an array of possible values for the Type const type.
 func PossibleTypeValues() []Type {
-	return []Type{BuiltIn, Custom, NotSpecified}
+	return []Type{TypeBuiltIn, TypeCustom, TypeNotSpecified}
 }
 
 // Assignment the policy assignment.
@@ -353,7 +355,7 @@ type AssignmentProperties struct {
 	Description *string `json:"description,omitempty"`
 	// Metadata - The policy assignment metadata.
 	Metadata interface{} `json:"metadata,omitempty"`
-	// EnforcementMode - The policy assignment enforcement mode. Possible values are Default and DoNotEnforce. Possible values include: 'Default', 'DoNotEnforce'
+	// EnforcementMode - The policy assignment enforcement mode. Possible values are NotSpecified, Default, and DoNotEnforce. Possible values include: 'NotSpecified', 'Default', 'DoNotEnforce'
 	EnforcementMode EnforcementMode `json:"enforcementMode,omitempty"`
 }
 
@@ -578,7 +580,7 @@ func NewDefinitionListResultPage(getNextPage func(context.Context, DefinitionLis
 
 // DefinitionProperties the policy definition properties.
 type DefinitionProperties struct {
-	// PolicyType - The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom. Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'
+	// PolicyType - The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom. Possible values include: 'TypeNotSpecified', 'TypeBuiltIn', 'TypeCustom'
 	PolicyType Type `json:"policyType,omitempty"`
 	// Mode - The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
 	Mode *string `json:"mode,omitempty"`
@@ -844,7 +846,7 @@ func NewSetDefinitionListResultPage(getNextPage func(context.Context, SetDefinit
 
 // SetDefinitionProperties the policy set definition properties.
 type SetDefinitionProperties struct {
-	// PolicyType - The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom. Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'
+	// PolicyType - The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom. Possible values include: 'TypeNotSpecified', 'TypeBuiltIn', 'TypeCustom'
 	PolicyType Type `json:"policyType,omitempty"`
 	// DisplayName - The display name of the policy set definition.
 	DisplayName *string `json:"displayName,omitempty"`

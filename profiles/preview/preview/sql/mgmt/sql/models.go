@@ -75,8 +75,27 @@ const (
 type SensitivityLabelSource = original.SensitivityLabelSource
 
 const (
-	Current     SensitivityLabelSource = original.Current
-	Recommended SensitivityLabelSource = original.Recommended
+	DatabaseStatusAutoClosed                        DatabaseStatus = original.DatabaseStatusAutoClosed
+	DatabaseStatusCopying                           DatabaseStatus = original.DatabaseStatusCopying
+	DatabaseStatusCreating                          DatabaseStatus = original.DatabaseStatusCreating
+	DatabaseStatusDisabled                          DatabaseStatus = original.DatabaseStatusDisabled
+	DatabaseStatusEmergencyMode                     DatabaseStatus = original.DatabaseStatusEmergencyMode
+	DatabaseStatusInaccessible                      DatabaseStatus = original.DatabaseStatusInaccessible
+	DatabaseStatusOffline                           DatabaseStatus = original.DatabaseStatusOffline
+	DatabaseStatusOfflineChangingDwPerformanceTiers DatabaseStatus = original.DatabaseStatusOfflineChangingDwPerformanceTiers
+	DatabaseStatusOfflineSecondary                  DatabaseStatus = original.DatabaseStatusOfflineSecondary
+	DatabaseStatusOnline                            DatabaseStatus = original.DatabaseStatusOnline
+	DatabaseStatusOnlineChangingDwPerformanceTiers  DatabaseStatus = original.DatabaseStatusOnlineChangingDwPerformanceTiers
+	DatabaseStatusPaused                            DatabaseStatus = original.DatabaseStatusPaused
+	DatabaseStatusPausing                           DatabaseStatus = original.DatabaseStatusPausing
+	DatabaseStatusRecovering                        DatabaseStatus = original.DatabaseStatusRecovering
+	DatabaseStatusRecoveryPending                   DatabaseStatus = original.DatabaseStatusRecoveryPending
+	DatabaseStatusRestoring                         DatabaseStatus = original.DatabaseStatusRestoring
+	DatabaseStatusResuming                          DatabaseStatus = original.DatabaseStatusResuming
+	DatabaseStatusScaling                           DatabaseStatus = original.DatabaseStatusScaling
+	DatabaseStatusShutdown                          DatabaseStatus = original.DatabaseStatusShutdown
+	DatabaseStatusStandby                           DatabaseStatus = original.DatabaseStatusStandby
+	DatabaseStatusSuspect                           DatabaseStatus = original.DatabaseStatusSuspect
 )
 
 type BaseClient = original.BaseClient

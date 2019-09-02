@@ -100,6 +100,12 @@ const (
 	Updating  ProvisioningState = original.Updating
 )
 
+type QuotaUnit = original.QuotaUnit
+
+const (
+	Count QuotaUnit = original.Count
+)
+
 type RemoteLoginPortPublicAccess = original.RemoteLoginPortPublicAccess
 
 const (
@@ -117,8 +123,19 @@ const (
 type Status = original.Status
 
 const (
-	StatusDisabled Status = original.StatusDisabled
-	StatusEnabled  Status = original.StatusEnabled
+	Failure                              Status = original.Failure
+	InvalidQuotaBelowClusterMinimum      Status = original.InvalidQuotaBelowClusterMinimum
+	InvalidQuotaExceedsSubscriptionLimit Status = original.InvalidQuotaExceedsSubscriptionLimit
+	InvalidVMFamilyName                  Status = original.InvalidVMFamilyName
+	Success                              Status = original.Success
+	Undefined                            Status = original.Undefined
+)
+
+type Status1 = original.Status1
+
+const (
+	Status1Disabled Status1 = original.Status1Disabled
+	Status1Enabled  Status1 = original.Status1Enabled
 )
 
 type UnderlyingResourceAction = original.UnderlyingResourceAction
@@ -312,6 +329,9 @@ func PossibleNodeStateValues() []NodeState {
 }
 func PossibleProvisioningStateValues() []ProvisioningState {
 	return original.PossibleProvisioningStateValues()
+}
+func PossibleQuotaUnitValues() []QuotaUnit {
+	return original.PossibleQuotaUnitValues()
 }
 func PossibleRemoteLoginPortPublicAccessValues() []RemoteLoginPortPublicAccess {
 	return original.PossibleRemoteLoginPortPublicAccessValues()

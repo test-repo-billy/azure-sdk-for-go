@@ -300,7 +300,6 @@ type BlobServiceItems = original.BlobServiceItems
 type BlobServiceProperties = original.BlobServiceProperties
 type BlobServicePropertiesProperties = original.BlobServicePropertiesProperties
 type BlobServicesClient = original.BlobServicesClient
-type ChangeFeed = original.ChangeFeed
 type CheckNameAvailabilityResult = original.CheckNameAvailabilityResult
 type ContainerProperties = original.ContainerProperties
 type CorsRule = original.CorsRule

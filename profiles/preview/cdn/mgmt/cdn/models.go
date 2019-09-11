@@ -165,12 +165,10 @@ type NameBasicDeliveryRuleAction = original.NameBasicDeliveryRuleAction
 
 const (
 	NameCacheExpiration      NameBasicDeliveryRuleAction = original.NameCacheExpiration
-	NameCacheKeyQueryString  NameBasicDeliveryRuleAction = original.NameCacheKeyQueryString
 	NameDeliveryRuleAction   NameBasicDeliveryRuleAction = original.NameDeliveryRuleAction
 	NameModifyRequestHeader  NameBasicDeliveryRuleAction = original.NameModifyRequestHeader
 	NameModifyResponseHeader NameBasicDeliveryRuleAction = original.NameModifyResponseHeader
 	NameURLRedirect          NameBasicDeliveryRuleAction = original.NameURLRedirect
-	NameURLRewrite           NameBasicDeliveryRuleAction = original.NameURLRewrite
 )
 
 type OptimizationType = original.OptimizationType
@@ -219,15 +217,6 @@ type ProtocolType = original.ProtocolType
 const (
 	IPBased              ProtocolType = original.IPBased
 	ServerNameIndication ProtocolType = original.ServerNameIndication
-)
-
-type QueryStringBehavior = original.QueryStringBehavior
-
-const (
-	Exclude    QueryStringBehavior = original.Exclude
-	ExcludeAll QueryStringBehavior = original.ExcludeAll
-	Include    QueryStringBehavior = original.Include
-	IncludeAll QueryStringBehavior = original.IncludeAll
 )
 
 type QueryStringCachingBehavior = original.QueryStringCachingBehavior
@@ -385,7 +374,6 @@ type BasicCustomDomainHTTPSParameters = original.BasicCustomDomainHTTPSParameter
 type BasicDeliveryRuleAction = original.BasicDeliveryRuleAction
 type BasicDeliveryRuleCondition = original.BasicDeliveryRuleCondition
 type CacheExpirationActionParameters = original.CacheExpirationActionParameters
-type CacheKeyQueryStringActionParameters = original.CacheKeyQueryStringActionParameters
 type CertificateSourceParameters = original.CertificateSourceParameters
 type CheckNameAvailabilityInput = original.CheckNameAvailabilityInput
 type CheckNameAvailabilityOutput = original.CheckNameAvailabilityOutput
@@ -407,7 +395,6 @@ type DeepCreatedOriginProperties = original.DeepCreatedOriginProperties
 type DeliveryRule = original.DeliveryRule
 type DeliveryRuleAction = original.DeliveryRuleAction
 type DeliveryRuleCacheExpirationAction = original.DeliveryRuleCacheExpirationAction
-type DeliveryRuleCacheKeyQueryStringAction = original.DeliveryRuleCacheKeyQueryStringAction
 type DeliveryRuleCondition = original.DeliveryRuleCondition
 type DeliveryRuleCookiesCondition = original.DeliveryRuleCookiesCondition
 type DeliveryRuleHTTPVersionCondition = original.DeliveryRuleHTTPVersionCondition
@@ -506,8 +493,6 @@ type URLFileNameMatchConditionParameters = original.URLFileNameMatchConditionPar
 type URLPathMatchConditionParameters = original.URLPathMatchConditionParameters
 type URLRedirectAction = original.URLRedirectAction
 type URLRedirectActionParameters = original.URLRedirectActionParameters
-type URLRewriteAction = original.URLRewriteAction
-type URLRewriteActionParameters = original.URLRewriteActionParameters
 type UserManagedHTTPSParameters = original.UserManagedHTTPSParameters
 type ValidateCustomDomainInput = original.ValidateCustomDomainInput
 type ValidateCustomDomainOutput = original.ValidateCustomDomainOutput
@@ -660,9 +645,6 @@ func PossibleProfileResourceStateValues() []ProfileResourceState {
 }
 func PossibleProtocolTypeValues() []ProtocolType {
 	return original.PossibleProtocolTypeValues()
-}
-func PossibleQueryStringBehaviorValues() []QueryStringBehavior {
-	return original.PossibleQueryStringBehaviorValues()
 }
 func PossibleQueryStringCachingBehaviorValues() []QueryStringCachingBehavior {
 	return original.PossibleQueryStringCachingBehaviorValues()

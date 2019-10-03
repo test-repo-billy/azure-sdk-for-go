@@ -296,6 +296,8 @@ type NameBasicDeliveryRuleAction string
 const (
 	// NameCacheExpiration ...
 	NameCacheExpiration NameBasicDeliveryRuleAction = "CacheExpiration"
+	// NameCacheKeyQueryString ...
+	NameCacheKeyQueryString NameBasicDeliveryRuleAction = "CacheKeyQueryString"
 	// NameDeliveryRuleAction ...
 	NameDeliveryRuleAction NameBasicDeliveryRuleAction = "DeliveryRuleAction"
 	// NameModifyRequestHeader ...
@@ -304,11 +306,13 @@ const (
 	NameModifyResponseHeader NameBasicDeliveryRuleAction = "ModifyResponseHeader"
 	// NameURLRedirect ...
 	NameURLRedirect NameBasicDeliveryRuleAction = "UrlRedirect"
+	// NameURLRewrite ...
+	NameURLRewrite NameBasicDeliveryRuleAction = "UrlRewrite"
 )
 
 // PossibleNameBasicDeliveryRuleActionValues returns an array of possible values for the NameBasicDeliveryRuleAction const type.
 func PossibleNameBasicDeliveryRuleActionValues() []NameBasicDeliveryRuleAction {
-	return []NameBasicDeliveryRuleAction{NameCacheExpiration, NameDeliveryRuleAction, NameModifyRequestHeader, NameModifyResponseHeader, NameURLRedirect}
+	return []NameBasicDeliveryRuleAction{NameCacheExpiration, NameCacheKeyQueryString, NameDeliveryRuleAction, NameModifyRequestHeader, NameModifyResponseHeader, NameURLRedirect, NameURLRewrite}
 }
 
 // OptimizationType enumerates the values for optimization type.
@@ -410,6 +414,25 @@ const (
 // PossibleProtocolTypeValues returns an array of possible values for the ProtocolType const type.
 func PossibleProtocolTypeValues() []ProtocolType {
 	return []ProtocolType{IPBased, ServerNameIndication}
+}
+
+// QueryStringBehavior enumerates the values for query string behavior.
+type QueryStringBehavior string
+
+const (
+	// Exclude ...
+	Exclude QueryStringBehavior = "Exclude"
+	// ExcludeAll ...
+	ExcludeAll QueryStringBehavior = "ExcludeAll"
+	// Include ...
+	Include QueryStringBehavior = "Include"
+	// IncludeAll ...
+	IncludeAll QueryStringBehavior = "IncludeAll"
+)
+
+// PossibleQueryStringBehaviorValues returns an array of possible values for the QueryStringBehavior const type.
+func PossibleQueryStringBehaviorValues() []QueryStringBehavior {
+	return []QueryStringBehavior{Exclude, ExcludeAll, Include, IncludeAll}
 }
 
 // QueryStringCachingBehavior enumerates the values for query string caching behavior.
@@ -734,6 +757,15 @@ type CacheExpirationActionParameters struct {
 	CacheType *string `json:"cacheType,omitempty"`
 	// CacheDuration - The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
 	CacheDuration *string `json:"cacheDuration,omitempty"`
+}
+
+// CacheKeyQueryStringActionParameters defines the parameters for the cache-key query string action.
+type CacheKeyQueryStringActionParameters struct {
+	OdataType *string `json:"@odata.type,omitempty"`
+	// QueryStringBehavior - Caching behavior for the requests. Possible values include: 'Include', 'IncludeAll', 'Exclude', 'ExcludeAll'
+	QueryStringBehavior QueryStringBehavior `json:"queryStringBehavior,omitempty"`
+	// QueryParameters - query parameters to include or exclude (comma separated).
+	QueryParameters *string `json:"queryParameters,omitempty"`
 }
 
 // CertificateSourceParameters defines the parameters for using CDN managed certificate for securing custom
@@ -1340,15 +1372,17 @@ func (dr *DeliveryRule) UnmarshalJSON(body []byte) error {
 // BasicDeliveryRuleAction an action for the delivery rule.
 type BasicDeliveryRuleAction interface {
 	AsURLRedirectAction() (*URLRedirectAction, bool)
+	AsURLRewriteAction() (*URLRewriteAction, bool)
 	AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool)
 	AsDeliveryRuleResponseHeaderAction() (*DeliveryRuleResponseHeaderAction, bool)
 	AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool)
+	AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool)
 	AsDeliveryRuleAction() (*DeliveryRuleAction, bool)
 }
 
 // DeliveryRuleAction an action for the delivery rule.
 type DeliveryRuleAction struct {
-	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration'
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
 	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
 }
 
@@ -1364,6 +1398,10 @@ func unmarshalBasicDeliveryRuleAction(body []byte) (BasicDeliveryRuleAction, err
 		var ura URLRedirectAction
 		err := json.Unmarshal(body, &ura)
 		return ura, err
+	case string(NameURLRewrite):
+		var ura URLRewriteAction
+		err := json.Unmarshal(body, &ura)
+		return ura, err
 	case string(NameModifyRequestHeader):
 		var drrha DeliveryRuleRequestHeaderAction
 		err := json.Unmarshal(body, &drrha)
@@ -1376,6 +1414,10 @@ func unmarshalBasicDeliveryRuleAction(body []byte) (BasicDeliveryRuleAction, err
 		var drcea DeliveryRuleCacheExpirationAction
 		err := json.Unmarshal(body, &drcea)
 		return drcea, err
+	case string(NameCacheKeyQueryString):
+		var drckqsa DeliveryRuleCacheKeyQueryStringAction
+		err := json.Unmarshal(body, &drckqsa)
+		return drckqsa, err
 	default:
 		var dra DeliveryRuleAction
 		err := json.Unmarshal(body, &dra)
@@ -1416,6 +1458,11 @@ func (dra DeliveryRuleAction) AsURLRedirectAction() (*URLRedirectAction, bool) {
 	return nil, false
 }
 
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for DeliveryRuleAction.
+func (dra DeliveryRuleAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleAction.
 func (dra DeliveryRuleAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
 	return nil, false
@@ -1428,6 +1475,11 @@ func (dra DeliveryRuleAction) AsDeliveryRuleResponseHeaderAction() (*DeliveryRul
 
 // AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for DeliveryRuleAction.
 func (dra DeliveryRuleAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for DeliveryRuleAction.
+func (dra DeliveryRuleAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
 	return nil, false
 }
 
@@ -1445,7 +1497,7 @@ func (dra DeliveryRuleAction) AsBasicDeliveryRuleAction() (BasicDeliveryRuleActi
 type DeliveryRuleCacheExpirationAction struct {
 	// Parameters - Defines the parameters for the action.
 	Parameters *CacheExpirationActionParameters `json:"parameters,omitempty"`
-	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration'
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
 	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
 }
 
@@ -1467,6 +1519,11 @@ func (drcea DeliveryRuleCacheExpirationAction) AsURLRedirectAction() (*URLRedire
 	return nil, false
 }
 
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheExpirationAction.
+func (drcea DeliveryRuleCacheExpirationAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheExpirationAction.
 func (drcea DeliveryRuleCacheExpirationAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
 	return nil, false
@@ -1482,6 +1539,11 @@ func (drcea DeliveryRuleCacheExpirationAction) AsDeliveryRuleCacheExpirationActi
 	return &drcea, true
 }
 
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheExpirationAction.
+func (drcea DeliveryRuleCacheExpirationAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheExpirationAction.
 func (drcea DeliveryRuleCacheExpirationAction) AsDeliveryRuleAction() (*DeliveryRuleAction, bool) {
 	return nil, false
@@ -1490,6 +1552,67 @@ func (drcea DeliveryRuleCacheExpirationAction) AsDeliveryRuleAction() (*Delivery
 // AsBasicDeliveryRuleAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheExpirationAction.
 func (drcea DeliveryRuleCacheExpirationAction) AsBasicDeliveryRuleAction() (BasicDeliveryRuleAction, bool) {
 	return &drcea, true
+}
+
+// DeliveryRuleCacheKeyQueryStringAction defines the cache-key query string action for the delivery rule.
+type DeliveryRuleCacheKeyQueryStringAction struct {
+	// Parameters - Defines the parameters for the action.
+	Parameters *CacheKeyQueryStringActionParameters `json:"parameters,omitempty"`
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
+	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) MarshalJSON() ([]byte, error) {
+	drckqsa.Name = NameCacheKeyQueryString
+	objectMap := make(map[string]interface{})
+	if drckqsa.Parameters != nil {
+		objectMap["parameters"] = drckqsa.Parameters
+	}
+	if drckqsa.Name != "" {
+		objectMap["name"] = drckqsa.Name
+	}
+	return json.Marshal(objectMap)
+}
+
+// AsURLRedirectAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsURLRedirectAction() (*URLRedirectAction, bool) {
+	return nil, false
+}
+
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleResponseHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsDeliveryRuleResponseHeaderAction() (*DeliveryRuleResponseHeaderAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
+	return &drckqsa, true
+}
+
+// AsDeliveryRuleAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsDeliveryRuleAction() (*DeliveryRuleAction, bool) {
+	return nil, false
+}
+
+// AsBasicDeliveryRuleAction is the BasicDeliveryRuleAction implementation for DeliveryRuleCacheKeyQueryStringAction.
+func (drckqsa DeliveryRuleCacheKeyQueryStringAction) AsBasicDeliveryRuleAction() (BasicDeliveryRuleAction, bool) {
+	return &drckqsa, true
 }
 
 // BasicDeliveryRuleCondition a condition for the delivery rule.
@@ -2407,7 +2530,7 @@ func (drrbc DeliveryRuleRequestBodyCondition) AsBasicDeliveryRuleCondition() (Ba
 type DeliveryRuleRequestHeaderAction struct {
 	// Parameters - Defines the parameters for the action.
 	Parameters *HeaderActionParameters `json:"parameters,omitempty"`
-	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration'
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
 	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
 }
 
@@ -2429,6 +2552,11 @@ func (drrha DeliveryRuleRequestHeaderAction) AsURLRedirectAction() (*URLRedirect
 	return nil, false
 }
 
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for DeliveryRuleRequestHeaderAction.
+func (drrha DeliveryRuleRequestHeaderAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleRequestHeaderAction.
 func (drrha DeliveryRuleRequestHeaderAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
 	return &drrha, true
@@ -2441,6 +2569,11 @@ func (drrha DeliveryRuleRequestHeaderAction) AsDeliveryRuleResponseHeaderAction(
 
 // AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for DeliveryRuleRequestHeaderAction.
 func (drrha DeliveryRuleRequestHeaderAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for DeliveryRuleRequestHeaderAction.
+func (drrha DeliveryRuleRequestHeaderAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
 	return nil, false
 }
 
@@ -2862,7 +2995,7 @@ func (drruc DeliveryRuleRequestURICondition) AsBasicDeliveryRuleCondition() (Bas
 type DeliveryRuleResponseHeaderAction struct {
 	// Parameters - Defines the parameters for the action.
 	Parameters *HeaderActionParameters `json:"parameters,omitempty"`
-	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration'
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
 	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
 }
 
@@ -2884,6 +3017,11 @@ func (drrha DeliveryRuleResponseHeaderAction) AsURLRedirectAction() (*URLRedirec
 	return nil, false
 }
 
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for DeliveryRuleResponseHeaderAction.
+func (drrha DeliveryRuleResponseHeaderAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for DeliveryRuleResponseHeaderAction.
 func (drrha DeliveryRuleResponseHeaderAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
 	return nil, false
@@ -2896,6 +3034,11 @@ func (drrha DeliveryRuleResponseHeaderAction) AsDeliveryRuleResponseHeaderAction
 
 // AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for DeliveryRuleResponseHeaderAction.
 func (drrha DeliveryRuleResponseHeaderAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for DeliveryRuleResponseHeaderAction.
+func (drrha DeliveryRuleResponseHeaderAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
 	return nil, false
 }
 
@@ -5379,7 +5522,7 @@ type URLPathMatchConditionParameters struct {
 type URLRedirectAction struct {
 	// Parameters - Defines the parameters for the action.
 	Parameters *URLRedirectActionParameters `json:"parameters,omitempty"`
-	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration'
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
 	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
 }
 
@@ -5401,6 +5544,11 @@ func (ura URLRedirectAction) AsURLRedirectAction() (*URLRedirectAction, bool) {
 	return &ura, true
 }
 
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for URLRedirectAction.
+func (ura URLRedirectAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return nil, false
+}
+
 // AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for URLRedirectAction.
 func (ura URLRedirectAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
 	return nil, false
@@ -5413,6 +5561,11 @@ func (ura URLRedirectAction) AsDeliveryRuleResponseHeaderAction() (*DeliveryRule
 
 // AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for URLRedirectAction.
 func (ura URLRedirectAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for URLRedirectAction.
+func (ura URLRedirectAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
 	return nil, false
 }
 
@@ -5441,6 +5594,78 @@ type URLRedirectActionParameters struct {
 	CustomQueryString *string `json:"customQueryString,omitempty"`
 	// CustomFragment - Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
 	CustomFragment *string `json:"customFragment,omitempty"`
+}
+
+// URLRewriteAction defines the url rewrite action for the delivery rule.
+type URLRewriteAction struct {
+	// Parameters - Defines the parameters for the action.
+	Parameters *URLRewriteActionParameters `json:"parameters,omitempty"`
+	// Name - Possible values include: 'NameDeliveryRuleAction', 'NameURLRedirect', 'NameURLRewrite', 'NameModifyRequestHeader', 'NameModifyResponseHeader', 'NameCacheExpiration', 'NameCacheKeyQueryString'
+	Name NameBasicDeliveryRuleAction `json:"name,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for URLRewriteAction.
+func (ura URLRewriteAction) MarshalJSON() ([]byte, error) {
+	ura.Name = NameURLRewrite
+	objectMap := make(map[string]interface{})
+	if ura.Parameters != nil {
+		objectMap["parameters"] = ura.Parameters
+	}
+	if ura.Name != "" {
+		objectMap["name"] = ura.Name
+	}
+	return json.Marshal(objectMap)
+}
+
+// AsURLRedirectAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsURLRedirectAction() (*URLRedirectAction, bool) {
+	return nil, false
+}
+
+// AsURLRewriteAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsURLRewriteAction() (*URLRewriteAction, bool) {
+	return &ura, true
+}
+
+// AsDeliveryRuleRequestHeaderAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsDeliveryRuleRequestHeaderAction() (*DeliveryRuleRequestHeaderAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleResponseHeaderAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsDeliveryRuleResponseHeaderAction() (*DeliveryRuleResponseHeaderAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheExpirationAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsDeliveryRuleCacheExpirationAction() (*DeliveryRuleCacheExpirationAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleCacheKeyQueryStringAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsDeliveryRuleCacheKeyQueryStringAction() (*DeliveryRuleCacheKeyQueryStringAction, bool) {
+	return nil, false
+}
+
+// AsDeliveryRuleAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsDeliveryRuleAction() (*DeliveryRuleAction, bool) {
+	return nil, false
+}
+
+// AsBasicDeliveryRuleAction is the BasicDeliveryRuleAction implementation for URLRewriteAction.
+func (ura URLRewriteAction) AsBasicDeliveryRuleAction() (BasicDeliveryRuleAction, bool) {
+	return &ura, true
+}
+
+// URLRewriteActionParameters defines the parameters for the url rewrite action.
+type URLRewriteActionParameters struct {
+	OdataType *string `json:"@odata.type,omitempty"`
+	// SourcePattern - define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
+	SourcePattern *string `json:"sourcePattern,omitempty"`
+	// Destination - Define the relative URL to which the above requests will be rewritten by.
+	Destination *string `json:"destination,omitempty"`
+	// PreserveUnmatchedPath - Whether to preserve unmatched path. Default value is true.
+	PreserveUnmatchedPath *bool `json:"preserveUnmatchedPath,omitempty"`
 }
 
 // UserManagedHTTPSParameters defines the certificate source parameters using user's keyvault certificate

@@ -85,7 +85,6 @@ type DirectoryServiceOptions = original.DirectoryServiceOptions
 
 const (
 	DirectoryServiceOptionsAADDS DirectoryServiceOptions = original.DirectoryServiceOptionsAADDS
-	DirectoryServiceOptionsAD    DirectoryServiceOptions = original.DirectoryServiceOptionsAD
 	DirectoryServiceOptionsNone  DirectoryServiceOptions = original.DirectoryServiceOptionsNone
 )
 
@@ -172,12 +171,6 @@ type LeaseStatus = original.LeaseStatus
 const (
 	LeaseStatusLocked   LeaseStatus = original.LeaseStatusLocked
 	LeaseStatusUnlocked LeaseStatus = original.LeaseStatusUnlocked
-)
-
-type ListKeyExpand = original.ListKeyExpand
-
-const (
-	Kerb ListKeyExpand = original.Kerb
 )
 
 type Permissions = original.Permissions
@@ -307,7 +300,6 @@ type AccountUpdateParameters = original.AccountUpdateParameters
 type AccountsClient = original.AccountsClient
 type AccountsCreateFuture = original.AccountsCreateFuture
 type AccountsFailoverFuture = original.AccountsFailoverFuture
-type ActiveDirectoryProperties = original.ActiveDirectoryProperties
 type AzureEntityResource = original.AzureEntityResource
 type AzureFilesIdentityBasedAuthentication = original.AzureFilesIdentityBasedAuthentication
 type BaseClient = original.BaseClient
@@ -530,9 +522,6 @@ func PossibleLeaseStateValues() []LeaseState {
 }
 func PossibleLeaseStatusValues() []LeaseStatus {
 	return original.PossibleLeaseStatusValues()
-}
-func PossibleListKeyExpandValues() []ListKeyExpand {
-	return original.PossibleListKeyExpandValues()
 }
 func PossiblePermissionsValues() []Permissions {
 	return original.PossiblePermissionsValues()

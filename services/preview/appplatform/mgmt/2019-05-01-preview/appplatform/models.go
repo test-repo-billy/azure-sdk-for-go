@@ -90,10 +90,6 @@ func PossibleDeploymentResourceProvisioningStateValues() []DeploymentResourcePro
 type DeploymentResourceStatus string
 
 const (
-	// DeploymentResourceStatusAllocating ...
-	DeploymentResourceStatusAllocating DeploymentResourceStatus = "Allocating"
-	// DeploymentResourceStatusCompiling ...
-	DeploymentResourceStatusCompiling DeploymentResourceStatus = "Compiling"
 	// DeploymentResourceStatusFailed ...
 	DeploymentResourceStatusFailed DeploymentResourceStatus = "Failed"
 	// DeploymentResourceStatusProcessing ...
@@ -104,13 +100,11 @@ const (
 	DeploymentResourceStatusStopped DeploymentResourceStatus = "Stopped"
 	// DeploymentResourceStatusUnknown ...
 	DeploymentResourceStatusUnknown DeploymentResourceStatus = "Unknown"
-	// DeploymentResourceStatusUpgrading ...
-	DeploymentResourceStatusUpgrading DeploymentResourceStatus = "Upgrading"
 )
 
 // PossibleDeploymentResourceStatusValues returns an array of possible values for the DeploymentResourceStatus const type.
 func PossibleDeploymentResourceStatusValues() []DeploymentResourceStatus {
-	return []DeploymentResourceStatus{DeploymentResourceStatusAllocating, DeploymentResourceStatusCompiling, DeploymentResourceStatusFailed, DeploymentResourceStatusProcessing, DeploymentResourceStatusRunning, DeploymentResourceStatusStopped, DeploymentResourceStatusUnknown, DeploymentResourceStatusUpgrading}
+	return []DeploymentResourceStatus{DeploymentResourceStatusFailed, DeploymentResourceStatusProcessing, DeploymentResourceStatusRunning, DeploymentResourceStatusStopped, DeploymentResourceStatusUnknown}
 }
 
 // ProvisioningState enumerates the values for provisioning state.
@@ -987,7 +981,7 @@ type DeploymentResourceProperties struct {
 	DeploymentSettings *DeploymentSettings `json:"deploymentSettings,omitempty"`
 	// ProvisioningState - READ-ONLY; Provisioning state of the Deployment. Possible values include: 'DeploymentResourceProvisioningStateCreating', 'DeploymentResourceProvisioningStateProcessing', 'DeploymentResourceProvisioningStateSucceeded', 'DeploymentResourceProvisioningStateFailed'
 	ProvisioningState DeploymentResourceProvisioningState `json:"provisioningState,omitempty"`
-	// Status - READ-ONLY; Status of the Deployment. Possible values include: 'DeploymentResourceStatusUnknown', 'DeploymentResourceStatusStopped', 'DeploymentResourceStatusRunning', 'DeploymentResourceStatusFailed', 'DeploymentResourceStatusProcessing', 'DeploymentResourceStatusAllocating', 'DeploymentResourceStatusUpgrading', 'DeploymentResourceStatusCompiling'
+	// Status - READ-ONLY; Status of the Deployment. Possible values include: 'DeploymentResourceStatusUnknown', 'DeploymentResourceStatusStopped', 'DeploymentResourceStatusRunning', 'DeploymentResourceStatusFailed', 'DeploymentResourceStatusProcessing'
 	Status DeploymentResourceStatus `json:"status,omitempty"`
 	// Active - READ-ONLY; Indicates whether the Deployment is active
 	Active *bool `json:"active,omitempty"`

@@ -32,10 +32,8 @@ const (
 type AppResourceProvisioningState = original.AppResourceProvisioningState
 
 const (
-	Creating  AppResourceProvisioningState = original.Creating
 	Failed    AppResourceProvisioningState = original.Failed
 	Succeeded AppResourceProvisioningState = original.Succeeded
-	Updating  AppResourceProvisioningState = original.Updating
 )
 
 type ConfigServerState = original.ConfigServerState
@@ -51,22 +49,20 @@ const (
 type DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningState
 
 const (
-	DeploymentResourceProvisioningStateCreating  DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateCreating
-	DeploymentResourceProvisioningStateFailed    DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateFailed
-	DeploymentResourceProvisioningStateSucceeded DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateSucceeded
-	DeploymentResourceProvisioningStateUpdating  DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateUpdating
+	DeploymentResourceProvisioningStateCreating   DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateCreating
+	DeploymentResourceProvisioningStateFailed     DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateFailed
+	DeploymentResourceProvisioningStateProcessing DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateProcessing
+	DeploymentResourceProvisioningStateSucceeded  DeploymentResourceProvisioningState = original.DeploymentResourceProvisioningStateSucceeded
 )
 
 type DeploymentResourceStatus = original.DeploymentResourceStatus
 
 const (
-	DeploymentResourceStatusAllocating DeploymentResourceStatus = original.DeploymentResourceStatusAllocating
-	DeploymentResourceStatusCompiling  DeploymentResourceStatus = original.DeploymentResourceStatusCompiling
 	DeploymentResourceStatusFailed     DeploymentResourceStatus = original.DeploymentResourceStatusFailed
+	DeploymentResourceStatusProcessing DeploymentResourceStatus = original.DeploymentResourceStatusProcessing
 	DeploymentResourceStatusRunning    DeploymentResourceStatus = original.DeploymentResourceStatusRunning
 	DeploymentResourceStatusStopped    DeploymentResourceStatus = original.DeploymentResourceStatusStopped
 	DeploymentResourceStatusUnknown    DeploymentResourceStatus = original.DeploymentResourceStatusUnknown
-	DeploymentResourceStatusUpgrading  DeploymentResourceStatus = original.DeploymentResourceStatusUpgrading
 )
 
 type ProvisioningState = original.ProvisioningState
@@ -119,8 +115,6 @@ type AppResourceCollectionIterator = original.AppResourceCollectionIterator
 type AppResourceCollectionPage = original.AppResourceCollectionPage
 type AppResourceProperties = original.AppResourceProperties
 type AppsClient = original.AppsClient
-type AppsCreateOrUpdateFuture = original.AppsCreateOrUpdateFuture
-type AppsUpdateFuture = original.AppsUpdateFuture
 type AvailableOperations = original.AvailableOperations
 type AvailableOperationsIterator = original.AvailableOperationsIterator
 type AvailableOperationsPage = original.AvailableOperationsPage

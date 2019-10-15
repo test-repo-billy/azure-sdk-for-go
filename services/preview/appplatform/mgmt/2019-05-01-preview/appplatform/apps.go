@@ -48,13 +48,13 @@ func NewAppsClientWithBaseURI(baseURI string, subscriptionID string) AppsClient 
 // serviceName - the name of the Service resource.
 // appName - the name of the App resource.
 // appResource - parameters for the create or update operation
-func (client AppsClient) CreateOrUpdate(ctx context.Context, resourceGroupName string, serviceName string, appName string, appResource *AppResource) (result AppsCreateOrUpdateFuture, err error) {
+func (client AppsClient) CreateOrUpdate(ctx context.Context, resourceGroupName string, serviceName string, appName string, appResource *AppResource) (result AppResource, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.CreateOrUpdate")
 		defer func() {
 			sc := -1
-			if result.Response() != nil {
-				sc = result.Response().StatusCode
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
 			}
 			tracing.EndSpan(ctx, sc, err)
 		}()
@@ -90,10 +90,16 @@ func (client AppsClient) CreateOrUpdate(ctx context.Context, resourceGroupName s
 		return
 	}
 
-	result, err = client.CreateOrUpdateSender(req)
+	resp, err := client.CreateOrUpdateSender(req)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "CreateOrUpdate", result.Response(), "Failure sending request")
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "CreateOrUpdate", resp, "Failure sending request")
 		return
+	}
+
+	result, err = client.CreateOrUpdateResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "CreateOrUpdate", resp, "Failure responding to request")
 	}
 
 	return
@@ -128,15 +134,9 @@ func (client AppsClient) CreateOrUpdatePreparer(ctx context.Context, resourceGro
 
 // CreateOrUpdateSender sends the CreateOrUpdate request. The method will close the
 // http.Response Body if it receives an error.
-func (client AppsClient) CreateOrUpdateSender(req *http.Request) (future AppsCreateOrUpdateFuture, err error) {
+func (client AppsClient) CreateOrUpdateSender(req *http.Request) (*http.Response, error) {
 	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	var resp *http.Response
-	resp, err = autorest.SendWithSender(client, req, sd...)
-	if err != nil {
-		return
-	}
-	future.Future, err = azure.NewFutureFromResponse(resp)
-	return
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // CreateOrUpdateResponder handles the response to the CreateOrUpdate request. The method always
@@ -145,7 +145,7 @@ func (client AppsClient) CreateOrUpdateResponder(resp *http.Response) (result Ap
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusCreated),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
@@ -518,13 +518,13 @@ func (client AppsClient) ListComplete(ctx context.Context, resourceGroupName str
 // serviceName - the name of the Service resource.
 // appName - the name of the App resource.
 // appResource - parameters for the update operation
-func (client AppsClient) Update(ctx context.Context, resourceGroupName string, serviceName string, appName string, appResource *AppResource) (result AppsUpdateFuture, err error) {
+func (client AppsClient) Update(ctx context.Context, resourceGroupName string, serviceName string, appName string, appResource *AppResource) (result AppResource, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.Update")
 		defer func() {
 			sc := -1
-			if result.Response() != nil {
-				sc = result.Response().StatusCode
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
 			}
 			tracing.EndSpan(ctx, sc, err)
 		}()
@@ -535,10 +535,16 @@ func (client AppsClient) Update(ctx context.Context, resourceGroupName string, s
 		return
 	}
 
-	result, err = client.UpdateSender(req)
+	resp, err := client.UpdateSender(req)
 	if err != nil {
-		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "Update", result.Response(), "Failure sending request")
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "Update", resp, "Failure sending request")
 		return
+	}
+
+	result, err = client.UpdateResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "appplatform.AppsClient", "Update", resp, "Failure responding to request")
 	}
 
 	return
@@ -573,15 +579,9 @@ func (client AppsClient) UpdatePreparer(ctx context.Context, resourceGroupName s
 
 // UpdateSender sends the Update request. The method will close the
 // http.Response Body if it receives an error.
-func (client AppsClient) UpdateSender(req *http.Request) (future AppsUpdateFuture, err error) {
+func (client AppsClient) UpdateSender(req *http.Request) (*http.Response, error) {
 	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	var resp *http.Response
-	resp, err = autorest.SendWithSender(client, req, sd...)
-	if err != nil {
-		return
-	}
-	future.Future, err = azure.NewFutureFromResponse(resp)
-	return
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // UpdateResponder handles the response to the Update request. The method always
@@ -590,7 +590,7 @@ func (client AppsClient) UpdateResponder(resp *http.Response) (result AppResourc
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusAccepted),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}

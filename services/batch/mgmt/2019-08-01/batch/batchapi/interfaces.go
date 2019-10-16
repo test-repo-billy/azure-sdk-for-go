@@ -25,7 +25,6 @@ import (
 
 // AccountClientAPI contains the set of methods on the AccountClient type.
 type AccountClientAPI interface {
-	Create(ctx context.Context, resourceGroupName string, accountName string, parameters batch.AccountCreateParameters) (result batch.AccountCreateFuture, err error)
 	Delete(ctx context.Context, resourceGroupName string, accountName string) (result batch.AccountDeleteFuture, err error)
 	Get(ctx context.Context, resourceGroupName string, accountName string) (result batch.Account, err error)
 	GetKeys(ctx context.Context, resourceGroupName string, accountName string) (result batch.AccountKeys, err error)
@@ -33,6 +32,7 @@ type AccountClientAPI interface {
 	ListByResourceGroup(ctx context.Context, resourceGroupName string) (result batch.AccountListResultPage, err error)
 	RegenerateKey(ctx context.Context, resourceGroupName string, accountName string, parameters batch.AccountRegenerateKeyParameters) (result batch.AccountKeys, err error)
 	SynchronizeAutoStorageKeys(ctx context.Context, resourceGroupName string, accountName string) (result autorest.Response, err error)
+	Test(ctx context.Context, resourceGroupName string, accountName string, parameters batch.AccountCreateParameters) (result batch.AccountTestFuture, err error)
 	Update(ctx context.Context, resourceGroupName string, accountName string, parameters batch.AccountUpdateParameters) (result batch.Account, err error)
 }
 

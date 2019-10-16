@@ -41,108 +41,6 @@ func NewAccountClientWithBaseURI(baseURI string, subscriptionID string) AccountC
 	return AccountClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// Create creates a new Batch account with the specified parameters. Existing accounts cannot be updated with this API
-// and should instead be updated with the Update Batch Account API.
-// Parameters:
-// resourceGroupName - the name of the resource group that contains the Batch account.
-// accountName - a name for the Batch account which must be unique within the region. Batch account names must
-// be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used
-// as part of the DNS name that is used to access the Batch service in the region in which the account is
-// created. For example: http://accountname.region.batch.azure.com/.
-// parameters - additional parameters for account creation.
-func (client AccountClient) Create(ctx context.Context, resourceGroupName string, accountName string, parameters AccountCreateParameters) (result AccountCreateFuture, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AccountClient.Create")
-		defer func() {
-			sc := -1
-			if result.Response() != nil {
-				sc = result.Response().StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: accountName,
-			Constraints: []validation.Constraint{{Target: "accountName", Name: validation.MaxLength, Rule: 24, Chain: nil},
-				{Target: "accountName", Name: validation.MinLength, Rule: 3, Chain: nil},
-				{Target: "accountName", Name: validation.Pattern, Rule: `^[-\w\._]+$`, Chain: nil}}},
-		{TargetValue: parameters,
-			Constraints: []validation.Constraint{{Target: "parameters.Location", Name: validation.Null, Rule: true, Chain: nil},
-				{Target: "parameters.AccountCreateProperties", Name: validation.Null, Rule: false,
-					Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.AutoStorage", Name: validation.Null, Rule: false,
-						Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.AutoStorage.StorageAccountID", Name: validation.Null, Rule: true, Chain: nil}}},
-						{Target: "parameters.AccountCreateProperties.KeyVaultReference", Name: validation.Null, Rule: false,
-							Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.KeyVaultReference.ID", Name: validation.Null, Rule: true, Chain: nil},
-								{Target: "parameters.AccountCreateProperties.KeyVaultReference.URL", Name: validation.Null, Rule: true, Chain: nil},
-							}},
-					}}}}}); err != nil {
-		return result, validation.NewError("batch.AccountClient", "Create", err.Error())
-	}
-
-	req, err := client.CreatePreparer(ctx, resourceGroupName, accountName, parameters)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "batch.AccountClient", "Create", nil, "Failure preparing request")
-		return
-	}
-
-	result, err = client.CreateSender(req)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "batch.AccountClient", "Create", result.Response(), "Failure sending request")
-		return
-	}
-
-	return
-}
-
-// CreatePreparer prepares the Create request.
-func (client AccountClient) CreatePreparer(ctx context.Context, resourceGroupName string, accountName string, parameters AccountCreateParameters) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"accountName":       autorest.Encode("path", accountName),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2019-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsContentType("application/json; charset=utf-8"),
-		autorest.AsPut(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}", pathParameters),
-		autorest.WithJSON(parameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// CreateSender sends the Create request. The method will close the
-// http.Response Body if it receives an error.
-func (client AccountClient) CreateSender(req *http.Request) (future AccountCreateFuture, err error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	var resp *http.Response
-	resp, err = autorest.SendWithSender(client, req, sd...)
-	if err != nil {
-		return
-	}
-	future.Future, err = azure.NewFutureFromResponse(resp)
-	return
-}
-
-// CreateResponder handles the response to the Create request. The method always
-// closes the http.Response Body.
-func (client AccountClient) CreateResponder(resp *http.Response) (result Account, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusAccepted),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
 // Delete deletes the specified Batch account.
 // Parameters:
 // resourceGroupName - the name of the resource group that contains the Batch account.
@@ -792,6 +690,108 @@ func (client AccountClient) SynchronizeAutoStorageKeysResponder(resp *http.Respo
 		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNoContent),
 		autorest.ByClosing())
 	result.Response = resp
+	return
+}
+
+// Test creates a new Batch account with the specified parameters. Existing accounts cannot be updated with this API
+// and should instead be updated with the Update Batch Account API.
+// Parameters:
+// resourceGroupName - the name of the resource group that contains the Batch account.
+// accountName - a name for the Batch account which must be unique within the region. Batch account names must
+// be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used
+// as part of the DNS name that is used to access the Batch service in the region in which the account is
+// created. For example: http://accountname.region.batch.azure.com/.
+// parameters - additional parameters for account creation.
+func (client AccountClient) Test(ctx context.Context, resourceGroupName string, accountName string, parameters AccountCreateParameters) (result AccountTestFuture, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AccountClient.Test")
+		defer func() {
+			sc := -1
+			if result.Response() != nil {
+				sc = result.Response().StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: accountName,
+			Constraints: []validation.Constraint{{Target: "accountName", Name: validation.MaxLength, Rule: 24, Chain: nil},
+				{Target: "accountName", Name: validation.MinLength, Rule: 3, Chain: nil},
+				{Target: "accountName", Name: validation.Pattern, Rule: `^[-\w\._]+$`, Chain: nil}}},
+		{TargetValue: parameters,
+			Constraints: []validation.Constraint{{Target: "parameters.Location", Name: validation.Null, Rule: true, Chain: nil},
+				{Target: "parameters.AccountCreateProperties", Name: validation.Null, Rule: false,
+					Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.AutoStorage", Name: validation.Null, Rule: false,
+						Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.AutoStorage.StorageAccountID", Name: validation.Null, Rule: true, Chain: nil}}},
+						{Target: "parameters.AccountCreateProperties.KeyVaultReference", Name: validation.Null, Rule: false,
+							Chain: []validation.Constraint{{Target: "parameters.AccountCreateProperties.KeyVaultReference.ID", Name: validation.Null, Rule: true, Chain: nil},
+								{Target: "parameters.AccountCreateProperties.KeyVaultReference.URL", Name: validation.Null, Rule: true, Chain: nil},
+							}},
+					}}}}}); err != nil {
+		return result, validation.NewError("batch.AccountClient", "Test", err.Error())
+	}
+
+	req, err := client.TestPreparer(ctx, resourceGroupName, accountName, parameters)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "batch.AccountClient", "Test", nil, "Failure preparing request")
+		return
+	}
+
+	result, err = client.TestSender(req)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "batch.AccountClient", "Test", result.Response(), "Failure sending request")
+		return
+	}
+
+	return
+}
+
+// TestPreparer prepares the Test request.
+func (client AccountClient) TestPreparer(ctx context.Context, resourceGroupName string, accountName string, parameters AccountCreateParameters) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"accountName":       autorest.Encode("path", accountName),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2019-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsContentType("application/json; charset=utf-8"),
+		autorest.AsPut(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}", pathParameters),
+		autorest.WithJSON(parameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// TestSender sends the Test request. The method will close the
+// http.Response Body if it receives an error.
+func (client AccountClient) TestSender(req *http.Request) (future AccountTestFuture, err error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	var resp *http.Response
+	resp, err = autorest.SendWithSender(client, req, sd...)
+	if err != nil {
+		return
+	}
+	future.Future, err = azure.NewFutureFromResponse(resp)
+	return
+}
+
+// TestResponder handles the response to the Test request. The method always
+// closes the http.Response Body.
+func (client AccountClient) TestResponder(resp *http.Response) (result Account, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusAccepted),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
 	return
 }
 

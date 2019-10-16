@@ -501,35 +501,6 @@ func (a *Account) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// AccountCreateFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type AccountCreateFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AccountCreateFuture) Result(client AccountClient) (a Account, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "batch.AccountCreateFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("batch.AccountCreateFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if a.Response.Response, err = future.GetResult(sender); err == nil && a.Response.Response.StatusCode != http.StatusNoContent {
-		a, err = client.CreateResponder(a.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "batch.AccountCreateFuture", "Result", a.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
 // AccountCreateParameters parameters supplied to the Create operation.
 type AccountCreateParameters struct {
 	// Location - The region in which to create the account.
@@ -817,6 +788,34 @@ type AccountProperties struct {
 type AccountRegenerateKeyParameters struct {
 	// KeyName - The type of account key to regenerate. Possible values include: 'Primary', 'Secondary'
 	KeyName AccountKeyType `json:"keyName,omitempty"`
+}
+
+// AccountTestFuture an abstraction for monitoring and retrieving the results of a long-running operation.
+type AccountTestFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AccountTestFuture) Result(client AccountClient) (a Account, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "batch.AccountTestFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("batch.AccountTestFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if a.Response.Response, err = future.GetResult(sender); err == nil && a.Response.Response.StatusCode != http.StatusNoContent {
+		a, err = client.TestResponder(a.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "batch.AccountTestFuture", "Result", a.Response.Response, "Failure responding to request")
+		}
+	}
+	return
 }
 
 // AccountUpdateParameters parameters for updating an Azure Batch account.

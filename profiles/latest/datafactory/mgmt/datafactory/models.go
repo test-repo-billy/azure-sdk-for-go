@@ -155,8 +155,9 @@ const (
 type DynamicsAuthenticationType = original.DynamicsAuthenticationType
 
 const (
-	Ifd       DynamicsAuthenticationType = original.Ifd
-	Office365 DynamicsAuthenticationType = original.Office365
+	AADServicePrincipal DynamicsAuthenticationType = original.AADServicePrincipal
+	Ifd                 DynamicsAuthenticationType = original.Ifd
+	Office365           DynamicsAuthenticationType = original.Office365
 )
 
 type DynamicsDeploymentType = original.DynamicsDeploymentType
@@ -391,6 +392,14 @@ const (
 	OraclePartitionOptionDynamicRange              OraclePartitionOption = original.OraclePartitionOptionDynamicRange
 	OraclePartitionOptionNone                      OraclePartitionOption = original.OraclePartitionOptionNone
 	OraclePartitionOptionPhysicalPartitionsOfTable OraclePartitionOption = original.OraclePartitionOptionPhysicalPartitionsOfTable
+)
+
+type OrcCompressionCodec = original.OrcCompressionCodec
+
+const (
+	OrcCompressionCodecNone   OrcCompressionCodec = original.OrcCompressionCodecNone
+	OrcCompressionCodecSnappy OrcCompressionCodec = original.OrcCompressionCodecSnappy
+	OrcCompressionCodecZlib   OrcCompressionCodec = original.OrcCompressionCodecZlib
 )
 
 type ParameterType = original.ParameterType
@@ -2309,6 +2318,9 @@ func PossibleODataAuthenticationTypeValues() []ODataAuthenticationType {
 }
 func PossibleOraclePartitionOptionValues() []OraclePartitionOption {
 	return original.PossibleOraclePartitionOptionValues()
+}
+func PossibleOrcCompressionCodecValues() []OrcCompressionCodec {
+	return original.PossibleOrcCompressionCodecValues()
 }
 func PossibleParameterTypeValues() []ParameterType {
 	return original.PossibleParameterTypeValues()

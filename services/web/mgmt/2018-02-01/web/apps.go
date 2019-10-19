@@ -2261,7 +2261,7 @@ func (client AppsClient) CreateOrUpdateHostNameBindingSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateHostNameBindingResponder handles the response to the CreateOrUpdateHostNameBinding request. The method always
+// CreateOrUpdateFunctionSecretResponder handles the response to the CreateOrUpdateFunctionSecret request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateHostNameBindingResponder(resp *http.Response) (result HostNameBinding, err error) {
 	err = autorest.Respond(
@@ -2354,7 +2354,7 @@ func (client AppsClient) CreateOrUpdateHostNameBindingSlotSender(req *http.Reque
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateHostNameBindingSlotResponder handles the response to the CreateOrUpdateHostNameBindingSlot request. The method always
+// CreateOrUpdateFunctionSecretSlotResponder handles the response to the CreateOrUpdateFunctionSecretSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateHostNameBindingSlotResponder(resp *http.Response) (result HostNameBinding, err error) {
 	err = autorest.Respond(
@@ -2632,7 +2632,7 @@ func (client AppsClient) CreateOrUpdateHybridConnectionSender(req *http.Request)
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateHybridConnectionResponder handles the response to the CreateOrUpdateHybridConnection request. The method always
+// CreateOrUpdateHostNameBindingResponder handles the response to the CreateOrUpdateHostNameBinding request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateHybridConnectionResponder(resp *http.Response) (result HybridConnection, err error) {
 	err = autorest.Respond(
@@ -2726,7 +2726,7 @@ func (client AppsClient) CreateOrUpdateHybridConnectionSlotSender(req *http.Requ
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateHybridConnectionSlotResponder handles the response to the CreateOrUpdateHybridConnectionSlot request. The method always
+// CreateOrUpdateHostNameBindingSlotResponder handles the response to the CreateOrUpdateHostNameBindingSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateHybridConnectionSlotResponder(resp *http.Response) (result HybridConnection, err error) {
 	err = autorest.Respond(
@@ -2817,7 +2817,7 @@ func (client AppsClient) CreateOrUpdatePublicCertificateSender(req *http.Request
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdatePublicCertificateResponder handles the response to the CreateOrUpdatePublicCertificate request. The method always
+// CreateOrUpdateHostSecretResponder handles the response to the CreateOrUpdateHostSecret request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdatePublicCertificateResponder(resp *http.Response) (result PublicCertificate, err error) {
 	err = autorest.Respond(
@@ -2911,7 +2911,7 @@ func (client AppsClient) CreateOrUpdatePublicCertificateSlotSender(req *http.Req
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdatePublicCertificateSlotResponder handles the response to the CreateOrUpdatePublicCertificateSlot request. The method always
+// CreateOrUpdateHostSecretSlotResponder handles the response to the CreateOrUpdateHostSecretSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdatePublicCertificateSlotResponder(resp *http.Response) (result PublicCertificate, err error) {
 	err = autorest.Respond(
@@ -3002,7 +3002,7 @@ func (client AppsClient) CreateOrUpdateRelayServiceConnectionSender(req *http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateRelayServiceConnectionResponder handles the response to the CreateOrUpdateRelayServiceConnection request. The method always
+// CreateOrUpdateHybridConnectionResponder handles the response to the CreateOrUpdateHybridConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateRelayServiceConnectionResponder(resp *http.Response) (result RelayServiceConnectionEntity, err error) {
 	err = autorest.Respond(
@@ -3096,7 +3096,7 @@ func (client AppsClient) CreateOrUpdateRelayServiceConnectionSlotSender(req *htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateRelayServiceConnectionSlotResponder handles the response to the CreateOrUpdateRelayServiceConnectionSlot request. The method always
+// CreateOrUpdateHybridConnectionSlotResponder handles the response to the CreateOrUpdateHybridConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateRelayServiceConnectionSlotResponder(resp *http.Response) (result RelayServiceConnectionEntity, err error) {
 	err = autorest.Respond(
@@ -3203,7 +3203,7 @@ func (client AppsClient) CreateOrUpdateSlotSender(req *http.Request) (future App
 	return
 }
 
-// CreateOrUpdateSlotResponder handles the response to the CreateOrUpdateSlot request. The method always
+// CreateOrUpdatePublicCertificateResponder handles the response to the CreateOrUpdatePublicCertificate request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateSlotResponder(resp *http.Response) (result Site, err error) {
 	err = autorest.Respond(
@@ -3291,7 +3291,7 @@ func (client AppsClient) CreateOrUpdateSourceControlSender(req *http.Request) (f
 	return
 }
 
-// CreateOrUpdateSourceControlResponder handles the response to the CreateOrUpdateSourceControl request. The method always
+// CreateOrUpdatePublicCertificateSlotResponder handles the response to the CreateOrUpdatePublicCertificateSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateSourceControlResponder(resp *http.Response) (result SiteSourceControl, err error) {
 	err = autorest.Respond(
@@ -3382,7 +3382,7 @@ func (client AppsClient) CreateOrUpdateSourceControlSlotSender(req *http.Request
 	return
 }
 
-// CreateOrUpdateSourceControlSlotResponder handles the response to the CreateOrUpdateSourceControlSlot request. The method always
+// CreateOrUpdateRelayServiceConnectionResponder handles the response to the CreateOrUpdateRelayServiceConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateSourceControlSlotResponder(resp *http.Response) (result SiteSourceControl, err error) {
 	err = autorest.Respond(
@@ -3473,7 +3473,7 @@ func (client AppsClient) CreateOrUpdateSwiftVirtualNetworkConnectionSender(req *
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateSwiftVirtualNetworkConnectionResponder handles the response to the CreateOrUpdateSwiftVirtualNetworkConnection request. The method always
+// CreateOrUpdateRelayServiceConnectionSlotResponder handles the response to the CreateOrUpdateRelayServiceConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateSwiftVirtualNetworkConnectionResponder(resp *http.Response) (result SwiftVirtualNetwork, err error) {
 	err = autorest.Respond(
@@ -3567,7 +3567,7 @@ func (client AppsClient) CreateOrUpdateSwiftVirtualNetworkConnectionSlotSender(r
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateSwiftVirtualNetworkConnectionSlotResponder handles the response to the CreateOrUpdateSwiftVirtualNetworkConnectionSlot request. The method always
+// CreateOrUpdateSlotResponder handles the response to the CreateOrUpdateSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateSwiftVirtualNetworkConnectionSlotResponder(resp *http.Response) (result SwiftVirtualNetwork, err error) {
 	err = autorest.Respond(
@@ -3658,7 +3658,7 @@ func (client AppsClient) CreateOrUpdateVnetConnectionSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateVnetConnectionResponder handles the response to the CreateOrUpdateVnetConnection request. The method always
+// CreateOrUpdateSourceControlResponder handles the response to the CreateOrUpdateSourceControl request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateVnetConnectionResponder(resp *http.Response) (result VnetInfo, err error) {
 	err = autorest.Respond(
@@ -3851,7 +3851,7 @@ func (client AppsClient) CreateOrUpdateVnetConnectionGatewaySlotSender(req *http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateVnetConnectionGatewaySlotResponder handles the response to the CreateOrUpdateVnetConnectionGatewaySlot request. The method always
+// CreateOrUpdateSwiftVirtualNetworkConnectionResponder handles the response to the CreateOrUpdateSwiftVirtualNetworkConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateVnetConnectionGatewaySlotResponder(resp *http.Response) (result VnetGateway, err error) {
 	err = autorest.Respond(
@@ -3945,7 +3945,7 @@ func (client AppsClient) CreateOrUpdateVnetConnectionSlotSender(req *http.Reques
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// CreateOrUpdateVnetConnectionSlotResponder handles the response to the CreateOrUpdateVnetConnectionSlot request. The method always
+// CreateOrUpdateSwiftVirtualNetworkConnectionSlotResponder handles the response to the CreateOrUpdateSwiftVirtualNetworkConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) CreateOrUpdateVnetConnectionSlotResponder(resp *http.Response) (result VnetInfo, err error) {
 	err = autorest.Respond(
@@ -4125,7 +4125,7 @@ func (client AppsClient) DeleteBackupSender(req *http.Request) (*http.Response, 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteBackupResponder handles the response to the DeleteBackup request. The method always
+// CreateOrUpdateVnetConnectionGatewayResponder handles the response to the CreateOrUpdateVnetConnectionGateway request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteBackupResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4209,7 +4209,7 @@ func (client AppsClient) DeleteBackupConfigurationSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteBackupConfigurationResponder handles the response to the DeleteBackupConfiguration request. The method always
+// CreateOrUpdateVnetConnectionGatewaySlotResponder handles the response to the CreateOrUpdateVnetConnectionGatewaySlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteBackupConfigurationResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4296,7 +4296,7 @@ func (client AppsClient) DeleteBackupConfigurationSlotSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteBackupConfigurationSlotResponder handles the response to the DeleteBackupConfigurationSlot request. The method always
+// CreateOrUpdateVnetConnectionSlotResponder handles the response to the CreateOrUpdateVnetConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteBackupConfigurationSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4385,7 +4385,7 @@ func (client AppsClient) DeleteBackupSlotSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteBackupSlotResponder handles the response to the DeleteBackupSlot request. The method always
+// DeleteResponder handles the response to the Delete request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteBackupSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4471,7 +4471,7 @@ func (client AppsClient) DeleteContinuousWebJobSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteContinuousWebJobResponder handles the response to the DeleteContinuousWebJob request. The method always
+// DeleteBackupResponder handles the response to the DeleteBackup request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteContinuousWebJobResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4560,7 +4560,7 @@ func (client AppsClient) DeleteContinuousWebJobSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteContinuousWebJobSlotResponder handles the response to the DeleteContinuousWebJobSlot request. The method always
+// DeleteBackupConfigurationResponder handles the response to the DeleteBackupConfiguration request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteContinuousWebJobSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4646,7 +4646,7 @@ func (client AppsClient) DeleteDeploymentSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteDeploymentResponder handles the response to the DeleteDeployment request. The method always
+// DeleteBackupConfigurationSlotResponder handles the response to the DeleteBackupConfigurationSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteDeploymentResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4735,7 +4735,7 @@ func (client AppsClient) DeleteDeploymentSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteDeploymentSlotResponder handles the response to the DeleteDeploymentSlot request. The method always
+// DeleteBackupSlotResponder handles the response to the DeleteBackupSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteDeploymentSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4821,7 +4821,7 @@ func (client AppsClient) DeleteDomainOwnershipIdentifierSender(req *http.Request
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteDomainOwnershipIdentifierResponder handles the response to the DeleteDomainOwnershipIdentifier request. The method always
+// DeleteContinuousWebJobResponder handles the response to the DeleteContinuousWebJob request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteDomainOwnershipIdentifierResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4910,7 +4910,7 @@ func (client AppsClient) DeleteDomainOwnershipIdentifierSlotSender(req *http.Req
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteDomainOwnershipIdentifierSlotResponder handles the response to the DeleteDomainOwnershipIdentifierSlot request. The method always
+// DeleteContinuousWebJobSlotResponder handles the response to the DeleteContinuousWebJobSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteDomainOwnershipIdentifierSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -4996,7 +4996,7 @@ func (client AppsClient) DeleteFunctionSender(req *http.Request) (*http.Response
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteFunctionResponder handles the response to the DeleteFunction request. The method always
+// DeleteDeploymentResponder handles the response to the DeleteDeployment request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteFunctionResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5260,7 +5260,7 @@ func (client AppsClient) DeleteHostNameBindingSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteHostNameBindingResponder handles the response to the DeleteHostNameBinding request. The method always
+// DeleteDeploymentSlotResponder handles the response to the DeleteDeploymentSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteHostNameBindingResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5349,7 +5349,7 @@ func (client AppsClient) DeleteHostNameBindingSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteHostNameBindingSlotResponder handles the response to the DeleteHostNameBindingSlot request. The method always
+// DeleteDomainOwnershipIdentifierResponder handles the response to the DeleteDomainOwnershipIdentifier request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteHostNameBindingSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5615,7 +5615,7 @@ func (client AppsClient) DeleteHybridConnectionSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteHybridConnectionResponder handles the response to the DeleteHybridConnection request. The method always
+// DeleteDomainOwnershipIdentifierSlotResponder handles the response to the DeleteDomainOwnershipIdentifierSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteHybridConnectionResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5705,7 +5705,7 @@ func (client AppsClient) DeleteHybridConnectionSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteHybridConnectionSlotResponder handles the response to the DeleteHybridConnectionSlot request. The method always
+// DeleteFunctionResponder handles the response to the DeleteFunction request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteHybridConnectionSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5793,7 +5793,7 @@ func (client AppsClient) DeleteInstanceFunctionSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteInstanceFunctionSlotResponder handles the response to the DeleteInstanceFunctionSlot request. The method always
+// DeleteFunctionSecretResponder handles the response to the DeleteFunctionSecret request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteInstanceFunctionSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5883,7 +5883,7 @@ func (client AppsClient) DeleteInstanceProcessSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteInstanceProcessResponder handles the response to the DeleteInstanceProcess request. The method always
+// DeleteFunctionSecretSlotResponder handles the response to the DeleteFunctionSecretSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteInstanceProcessResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -5976,7 +5976,7 @@ func (client AppsClient) DeleteInstanceProcessSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteInstanceProcessSlotResponder handles the response to the DeleteInstanceProcessSlot request. The method always
+// DeleteHostNameBindingResponder handles the response to the DeleteHostNameBinding request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteInstanceProcessSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6062,7 +6062,7 @@ func (client AppsClient) DeletePremierAddOnSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeletePremierAddOnResponder handles the response to the DeletePremierAddOn request. The method always
+// DeleteHostNameBindingSlotResponder handles the response to the DeleteHostNameBindingSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeletePremierAddOnResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6151,7 +6151,7 @@ func (client AppsClient) DeletePremierAddOnSlotSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeletePremierAddOnSlotResponder handles the response to the DeletePremierAddOnSlot request. The method always
+// DeleteHostSecretResponder handles the response to the DeleteHostSecret request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeletePremierAddOnSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6238,7 +6238,7 @@ func (client AppsClient) DeleteProcessSender(req *http.Request) (*http.Response,
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteProcessResponder handles the response to the DeleteProcess request. The method always
+// DeleteHostSecretSlotResponder handles the response to the DeleteHostSecretSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteProcessResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6328,7 +6328,7 @@ func (client AppsClient) DeleteProcessSlotSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteProcessSlotResponder handles the response to the DeleteProcessSlot request. The method always
+// DeleteHybridConnectionResponder handles the response to the DeleteHybridConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteProcessSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6414,7 +6414,7 @@ func (client AppsClient) DeletePublicCertificateSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeletePublicCertificateResponder handles the response to the DeletePublicCertificate request. The method always
+// DeleteHybridConnectionSlotResponder handles the response to the DeleteHybridConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeletePublicCertificateResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6503,7 +6503,7 @@ func (client AppsClient) DeletePublicCertificateSlotSender(req *http.Request) (*
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeletePublicCertificateSlotResponder handles the response to the DeletePublicCertificateSlot request. The method always
+// DeleteInstanceFunctionSlotResponder handles the response to the DeleteInstanceFunctionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeletePublicCertificateSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6589,7 +6589,7 @@ func (client AppsClient) DeleteRelayServiceConnectionSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteRelayServiceConnectionResponder handles the response to the DeleteRelayServiceConnection request. The method always
+// DeleteInstanceProcessResponder handles the response to the DeleteInstanceProcess request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteRelayServiceConnectionResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6678,7 +6678,7 @@ func (client AppsClient) DeleteRelayServiceConnectionSlotSender(req *http.Reques
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteRelayServiceConnectionSlotResponder handles the response to the DeleteRelayServiceConnectionSlot request. The method always
+// DeleteInstanceProcessSlotResponder handles the response to the DeleteInstanceProcessSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteRelayServiceConnectionSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6764,7 +6764,7 @@ func (client AppsClient) DeleteSiteExtensionSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSiteExtensionResponder handles the response to the DeleteSiteExtension request. The method always
+// DeletePremierAddOnResponder handles the response to the DeletePremierAddOn request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSiteExtensionResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6853,7 +6853,7 @@ func (client AppsClient) DeleteSiteExtensionSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSiteExtensionSlotResponder handles the response to the DeleteSiteExtensionSlot request. The method always
+// DeletePremierAddOnSlotResponder handles the response to the DeletePremierAddOnSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSiteExtensionSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -6948,7 +6948,7 @@ func (client AppsClient) DeleteSlotSender(req *http.Request) (*http.Response, er
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSlotResponder handles the response to the DeleteSlot request. The method always
+// DeleteProcessResponder handles the response to the DeleteProcess request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7032,7 +7032,7 @@ func (client AppsClient) DeleteSourceControlSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSourceControlResponder handles the response to the DeleteSourceControl request. The method always
+// DeleteProcessSlotResponder handles the response to the DeleteProcessSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSourceControlResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7119,7 +7119,7 @@ func (client AppsClient) DeleteSourceControlSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSourceControlSlotResponder handles the response to the DeleteSourceControlSlot request. The method always
+// DeletePublicCertificateResponder handles the response to the DeletePublicCertificate request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSourceControlSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7203,7 +7203,7 @@ func (client AppsClient) DeleteSwiftVirtualNetworkSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSwiftVirtualNetworkResponder handles the response to the DeleteSwiftVirtualNetwork request. The method always
+// DeletePublicCertificateSlotResponder handles the response to the DeletePublicCertificateSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSwiftVirtualNetworkResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7290,7 +7290,7 @@ func (client AppsClient) DeleteSwiftVirtualNetworkSlotSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteSwiftVirtualNetworkSlotResponder handles the response to the DeleteSwiftVirtualNetworkSlot request. The method always
+// DeleteRelayServiceConnectionResponder handles the response to the DeleteRelayServiceConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteSwiftVirtualNetworkSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7376,7 +7376,7 @@ func (client AppsClient) DeleteTriggeredWebJobSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteTriggeredWebJobResponder handles the response to the DeleteTriggeredWebJob request. The method always
+// DeleteRelayServiceConnectionSlotResponder handles the response to the DeleteRelayServiceConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteTriggeredWebJobResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7465,7 +7465,7 @@ func (client AppsClient) DeleteTriggeredWebJobSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteTriggeredWebJobSlotResponder handles the response to the DeleteTriggeredWebJobSlot request. The method always
+// DeleteSiteExtensionResponder handles the response to the DeleteSiteExtension request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteTriggeredWebJobSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7551,7 +7551,7 @@ func (client AppsClient) DeleteVnetConnectionSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteVnetConnectionResponder handles the response to the DeleteVnetConnection request. The method always
+// DeleteSiteExtensionSlotResponder handles the response to the DeleteSiteExtensionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteVnetConnectionResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7640,7 +7640,7 @@ func (client AppsClient) DeleteVnetConnectionSlotSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DeleteVnetConnectionSlotResponder handles the response to the DeleteVnetConnectionSlot request. The method always
+// DeleteSlotResponder handles the response to the DeleteSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DeleteVnetConnectionSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -7830,7 +7830,7 @@ func (client AppsClient) DiscoverBackupSlotSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// DiscoverBackupSlotResponder handles the response to the DiscoverBackupSlot request. The method always
+// DeleteSourceControlSlotResponder handles the response to the DeleteSourceControlSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) DiscoverBackupSlotResponder(resp *http.Response) (result RestoreRequest, err error) {
 	err = autorest.Respond(
@@ -7915,7 +7915,7 @@ func (client AppsClient) GenerateNewSitePublishingPasswordSender(req *http.Reque
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GenerateNewSitePublishingPasswordResponder handles the response to the GenerateNewSitePublishingPassword request. The method always
+// DeleteSwiftVirtualNetworkResponder handles the response to the DeleteSwiftVirtualNetwork request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GenerateNewSitePublishingPasswordResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -8003,7 +8003,7 @@ func (client AppsClient) GenerateNewSitePublishingPasswordSlotSender(req *http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GenerateNewSitePublishingPasswordSlotResponder handles the response to the GenerateNewSitePublishingPasswordSlot request. The method always
+// DeleteSwiftVirtualNetworkSlotResponder handles the response to the DeleteSwiftVirtualNetworkSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GenerateNewSitePublishingPasswordSlotResponder(resp *http.Response) (result autorest.Response, err error) {
 	err = autorest.Respond(
@@ -8087,7 +8087,7 @@ func (client AppsClient) GetSender(req *http.Request) (*http.Response, error) {
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetResponder handles the response to the Get request. The method always
+// DeleteTriggeredWebJobResponder handles the response to the DeleteTriggeredWebJob request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetResponder(resp *http.Response) (result Site, err error) {
 	err = autorest.Respond(
@@ -8172,7 +8172,7 @@ func (client AppsClient) GetAuthSettingsSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetAuthSettingsResponder handles the response to the GetAuthSettings request. The method always
+// DeleteTriggeredWebJobSlotResponder handles the response to the DeleteTriggeredWebJobSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetAuthSettingsResponder(resp *http.Response) (result SiteAuthSettings, err error) {
 	err = autorest.Respond(
@@ -8260,7 +8260,7 @@ func (client AppsClient) GetAuthSettingsSlotSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetAuthSettingsSlotResponder handles the response to the GetAuthSettingsSlot request. The method always
+// DeleteVnetConnectionResponder handles the response to the DeleteVnetConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetAuthSettingsSlotResponder(resp *http.Response) (result SiteAuthSettings, err error) {
 	err = autorest.Respond(
@@ -8345,7 +8345,7 @@ func (client AppsClient) GetBackupConfigurationSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetBackupConfigurationResponder handles the response to the GetBackupConfiguration request. The method always
+// DeleteVnetConnectionSlotResponder handles the response to the DeleteVnetConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetBackupConfigurationResponder(resp *http.Response) (result BackupRequest, err error) {
 	err = autorest.Respond(
@@ -8433,7 +8433,7 @@ func (client AppsClient) GetBackupConfigurationSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetBackupConfigurationSlotResponder handles the response to the GetBackupConfigurationSlot request. The method always
+// DiscoverBackupResponder handles the response to the DiscoverBackup request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetBackupConfigurationSlotResponder(resp *http.Response) (result BackupRequest, err error) {
 	err = autorest.Respond(
@@ -8520,7 +8520,7 @@ func (client AppsClient) GetBackupStatusSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetBackupStatusResponder handles the response to the GetBackupStatus request. The method always
+// DiscoverBackupSlotResponder handles the response to the DiscoverBackupSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetBackupStatusResponder(resp *http.Response) (result BackupItem, err error) {
 	err = autorest.Respond(
@@ -8610,7 +8610,7 @@ func (client AppsClient) GetBackupStatusSlotSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetBackupStatusSlotResponder handles the response to the GetBackupStatusSlot request. The method always
+// GenerateNewSitePublishingPasswordResponder handles the response to the GenerateNewSitePublishingPassword request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetBackupStatusSlotResponder(resp *http.Response) (result BackupItem, err error) {
 	err = autorest.Respond(
@@ -8696,7 +8696,7 @@ func (client AppsClient) GetConfigurationSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetConfigurationResponder handles the response to the GetConfiguration request. The method always
+// GenerateNewSitePublishingPasswordSlotResponder handles the response to the GenerateNewSitePublishingPasswordSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetConfigurationResponder(resp *http.Response) (result SiteConfigResource, err error) {
 	err = autorest.Respond(
@@ -8785,7 +8785,7 @@ func (client AppsClient) GetConfigurationSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetConfigurationSlotResponder handles the response to the GetConfigurationSlot request. The method always
+// GetResponder handles the response to the Get request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetConfigurationSlotResponder(resp *http.Response) (result SiteConfigResource, err error) {
 	err = autorest.Respond(
@@ -8872,7 +8872,7 @@ func (client AppsClient) GetConfigurationSnapshotSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetConfigurationSnapshotResponder handles the response to the GetConfigurationSnapshot request. The method always
+// GetAuthSettingsResponder handles the response to the GetAuthSettings request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetConfigurationSnapshotResponder(resp *http.Response) (result SiteConfigResource, err error) {
 	err = autorest.Respond(
@@ -8962,7 +8962,7 @@ func (client AppsClient) GetConfigurationSnapshotSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetConfigurationSnapshotSlotResponder handles the response to the GetConfigurationSnapshotSlot request. The method always
+// GetAuthSettingsSlotResponder handles the response to the GetAuthSettingsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetConfigurationSnapshotSlotResponder(resp *http.Response) (result SiteConfigResource, err error) {
 	err = autorest.Respond(
@@ -9047,7 +9047,7 @@ func (client AppsClient) GetContainerLogsZipSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetContainerLogsZipResponder handles the response to the GetContainerLogsZip request. The method always
+// GetBackupConfigurationResponder handles the response to the GetBackupConfiguration request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetContainerLogsZipResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -9133,7 +9133,7 @@ func (client AppsClient) GetContainerLogsZipSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetContainerLogsZipSlotResponder handles the response to the GetContainerLogsZipSlot request. The method always
+// GetBackupConfigurationSlotResponder handles the response to the GetBackupConfigurationSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetContainerLogsZipSlotResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -9219,7 +9219,7 @@ func (client AppsClient) GetContinuousWebJobSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetContinuousWebJobResponder handles the response to the GetContinuousWebJob request. The method always
+// GetBackupStatusResponder handles the response to the GetBackupStatus request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetContinuousWebJobResponder(resp *http.Response) (result ContinuousWebJob, err error) {
 	err = autorest.Respond(
@@ -9309,7 +9309,7 @@ func (client AppsClient) GetContinuousWebJobSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetContinuousWebJobSlotResponder handles the response to the GetContinuousWebJobSlot request. The method always
+// GetBackupStatusSlotResponder handles the response to the GetBackupStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetContinuousWebJobSlotResponder(resp *http.Response) (result ContinuousWebJob, err error) {
 	err = autorest.Respond(
@@ -9396,7 +9396,7 @@ func (client AppsClient) GetDeploymentSender(req *http.Request) (*http.Response,
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDeploymentResponder handles the response to the GetDeployment request. The method always
+// GetConfigurationResponder handles the response to the GetConfiguration request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDeploymentResponder(resp *http.Response) (result Deployment, err error) {
 	err = autorest.Respond(
@@ -9486,7 +9486,7 @@ func (client AppsClient) GetDeploymentSlotSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDeploymentSlotResponder handles the response to the GetDeploymentSlot request. The method always
+// GetConfigurationSlotResponder handles the response to the GetConfigurationSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDeploymentSlotResponder(resp *http.Response) (result Deployment, err error) {
 	err = autorest.Respond(
@@ -9571,7 +9571,7 @@ func (client AppsClient) GetDiagnosticLogsConfigurationSender(req *http.Request)
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDiagnosticLogsConfigurationResponder handles the response to the GetDiagnosticLogsConfiguration request. The method always
+// GetConfigurationSnapshotResponder handles the response to the GetConfigurationSnapshot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDiagnosticLogsConfigurationResponder(resp *http.Response) (result SiteLogsConfig, err error) {
 	err = autorest.Respond(
@@ -9659,7 +9659,7 @@ func (client AppsClient) GetDiagnosticLogsConfigurationSlotSender(req *http.Requ
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDiagnosticLogsConfigurationSlotResponder handles the response to the GetDiagnosticLogsConfigurationSlot request. The method always
+// GetConfigurationSnapshotSlotResponder handles the response to the GetConfigurationSnapshotSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDiagnosticLogsConfigurationSlotResponder(resp *http.Response) (result SiteLogsConfig, err error) {
 	err = autorest.Respond(
@@ -9746,7 +9746,7 @@ func (client AppsClient) GetDomainOwnershipIdentifierSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDomainOwnershipIdentifierResponder handles the response to the GetDomainOwnershipIdentifier request. The method always
+// GetContainerLogsZipResponder handles the response to the GetContainerLogsZip request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDomainOwnershipIdentifierResponder(resp *http.Response) (result Identifier, err error) {
 	err = autorest.Respond(
@@ -9836,7 +9836,7 @@ func (client AppsClient) GetDomainOwnershipIdentifierSlotSender(req *http.Reques
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetDomainOwnershipIdentifierSlotResponder handles the response to the GetDomainOwnershipIdentifierSlot request. The method always
+// GetContainerLogsZipSlotResponder handles the response to the GetContainerLogsZipSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetDomainOwnershipIdentifierSlotResponder(resp *http.Response) (result Identifier, err error) {
 	err = autorest.Respond(
@@ -9923,7 +9923,7 @@ func (client AppsClient) GetFunctionSender(req *http.Request) (*http.Response, e
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetFunctionResponder handles the response to the GetFunction request. The method always
+// GetContinuousWebJobResponder handles the response to the GetContinuousWebJob request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetFunctionResponder(resp *http.Response) (result FunctionEnvelope, err error) {
 	err = autorest.Respond(
@@ -10008,7 +10008,7 @@ func (client AppsClient) GetFunctionsAdminTokenSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetFunctionsAdminTokenResponder handles the response to the GetFunctionsAdminToken request. The method always
+// GetContinuousWebJobSlotResponder handles the response to the GetContinuousWebJobSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetFunctionsAdminTokenResponder(resp *http.Response) (result String, err error) {
 	err = autorest.Respond(
@@ -10095,7 +10095,7 @@ func (client AppsClient) GetFunctionsAdminTokenSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetFunctionsAdminTokenSlotResponder handles the response to the GetFunctionsAdminTokenSlot request. The method always
+// GetDeploymentResponder handles the response to the GetDeployment request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetFunctionsAdminTokenSlotResponder(resp *http.Response) (result String, err error) {
 	err = autorest.Respond(
@@ -10182,7 +10182,7 @@ func (client AppsClient) GetHostNameBindingSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetHostNameBindingResponder handles the response to the GetHostNameBinding request. The method always
+// GetDeploymentSlotResponder handles the response to the GetDeploymentSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetHostNameBindingResponder(resp *http.Response) (result HostNameBinding, err error) {
 	err = autorest.Respond(
@@ -10272,7 +10272,7 @@ func (client AppsClient) GetHostNameBindingSlotSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetHostNameBindingSlotResponder handles the response to the GetHostNameBindingSlot request. The method always
+// GetDiagnosticLogsConfigurationResponder handles the response to the GetDiagnosticLogsConfiguration request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetHostNameBindingSlotResponder(resp *http.Response) (result HostNameBinding, err error) {
 	err = autorest.Respond(
@@ -10361,7 +10361,7 @@ func (client AppsClient) GetHybridConnectionSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetHybridConnectionResponder handles the response to the GetHybridConnection request. The method always
+// GetDiagnosticLogsConfigurationSlotResponder handles the response to the GetDiagnosticLogsConfigurationSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetHybridConnectionResponder(resp *http.Response) (result HybridConnection, err error) {
 	err = autorest.Respond(
@@ -10452,7 +10452,7 @@ func (client AppsClient) GetHybridConnectionSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetHybridConnectionSlotResponder handles the response to the GetHybridConnectionSlot request. The method always
+// GetDomainOwnershipIdentifierResponder handles the response to the GetDomainOwnershipIdentifier request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetHybridConnectionSlotResponder(resp *http.Response) (result HybridConnection, err error) {
 	err = autorest.Respond(
@@ -10541,7 +10541,7 @@ func (client AppsClient) GetInstanceFunctionSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceFunctionSlotResponder handles the response to the GetInstanceFunctionSlot request. The method always
+// GetDomainOwnershipIdentifierSlotResponder handles the response to the GetDomainOwnershipIdentifierSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceFunctionSlotResponder(resp *http.Response) (result FunctionEnvelope, err error) {
 	err = autorest.Respond(
@@ -10628,7 +10628,7 @@ func (client AppsClient) GetInstanceMSDeployLogSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceMSDeployLogResponder handles the response to the GetInstanceMSDeployLog request. The method always
+// GetFunctionResponder handles the response to the GetFunction request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceMSDeployLogResponder(resp *http.Response) (result MSDeployLog, err error) {
 	err = autorest.Respond(
@@ -10717,7 +10717,7 @@ func (client AppsClient) GetInstanceMSDeployLogSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceMSDeployLogSlotResponder handles the response to the GetInstanceMSDeployLogSlot request. The method always
+// GetFunctionsAdminTokenResponder handles the response to the GetFunctionsAdminToken request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceMSDeployLogSlotResponder(resp *http.Response) (result MSDeployLog, err error) {
 	err = autorest.Respond(
@@ -10804,7 +10804,7 @@ func (client AppsClient) GetInstanceMsDeployStatusSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceMsDeployStatusResponder handles the response to the GetInstanceMsDeployStatus request. The method always
+// GetFunctionsAdminTokenSlotResponder handles the response to the GetFunctionsAdminTokenSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceMsDeployStatusResponder(resp *http.Response) (result MSDeployStatus, err error) {
 	err = autorest.Respond(
@@ -10893,7 +10893,7 @@ func (client AppsClient) GetInstanceMsDeployStatusSlotSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceMsDeployStatusSlotResponder handles the response to the GetInstanceMsDeployStatusSlot request. The method always
+// GetHostNameBindingResponder handles the response to the GetHostNameBinding request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceMsDeployStatusSlotResponder(resp *http.Response) (result MSDeployStatus, err error) {
 	err = autorest.Respond(
@@ -10983,7 +10983,7 @@ func (client AppsClient) GetInstanceProcessSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessResponder handles the response to the GetInstanceProcess request. The method always
+// GetHostNameBindingSlotResponder handles the response to the GetHostNameBindingSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessResponder(resp *http.Response) (result ProcessInfo, err error) {
 	err = autorest.Respond(
@@ -11073,7 +11073,7 @@ func (client AppsClient) GetInstanceProcessDumpSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessDumpResponder handles the response to the GetInstanceProcessDump request. The method always
+// GetHybridConnectionResponder handles the response to the GetHybridConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessDumpResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -11166,7 +11166,7 @@ func (client AppsClient) GetInstanceProcessDumpSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessDumpSlotResponder handles the response to the GetInstanceProcessDumpSlot request. The method always
+// GetHybridConnectionSlotResponder handles the response to the GetHybridConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessDumpSlotResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -11257,7 +11257,7 @@ func (client AppsClient) GetInstanceProcessModuleSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessModuleResponder handles the response to the GetInstanceProcessModule request. The method always
+// GetInstanceFunctionSlotResponder handles the response to the GetInstanceFunctionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessModuleResponder(resp *http.Response) (result ProcessModuleInfo, err error) {
 	err = autorest.Respond(
@@ -11352,7 +11352,7 @@ func (client AppsClient) GetInstanceProcessModuleSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessModuleSlotResponder handles the response to the GetInstanceProcessModuleSlot request. The method always
+// GetInstanceMSDeployLogResponder handles the response to the GetInstanceMSDeployLog request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessModuleSlotResponder(resp *http.Response) (result ProcessModuleInfo, err error) {
 	err = autorest.Respond(
@@ -11538,7 +11538,7 @@ func (client AppsClient) GetInstanceProcessThreadSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessThreadResponder handles the response to the GetInstanceProcessThread request. The method always
+// GetInstanceMsDeployStatusResponder handles the response to the GetInstanceMsDeployStatus request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessThreadResponder(resp *http.Response) (result ProcessThreadInfo, err error) {
 	err = autorest.Respond(
@@ -11634,7 +11634,7 @@ func (client AppsClient) GetInstanceProcessThreadSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetInstanceProcessThreadSlotResponder handles the response to the GetInstanceProcessThreadSlot request. The method always
+// GetInstanceMsDeployStatusSlotResponder handles the response to the GetInstanceMsDeployStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetInstanceProcessThreadSlotResponder(resp *http.Response) (result ProcessThreadInfo, err error) {
 	err = autorest.Respond(
@@ -11720,7 +11720,7 @@ func (client AppsClient) GetMigrateMySQLStatusSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMigrateMySQLStatusResponder handles the response to the GetMigrateMySQLStatus request. The method always
+// GetInstanceProcessResponder handles the response to the GetInstanceProcess request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMigrateMySQLStatusResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
 	err = autorest.Respond(
@@ -11808,7 +11808,7 @@ func (client AppsClient) GetMigrateMySQLStatusSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMigrateMySQLStatusSlotResponder handles the response to the GetMigrateMySQLStatusSlot request. The method always
+// GetInstanceProcessDumpResponder handles the response to the GetInstanceProcessDump request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMigrateMySQLStatusSlotResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
 	err = autorest.Respond(
@@ -11893,7 +11893,7 @@ func (client AppsClient) GetMSDeployLogSender(req *http.Request) (*http.Response
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMSDeployLogResponder handles the response to the GetMSDeployLog request. The method always
+// GetInstanceProcessDumpSlotResponder handles the response to the GetInstanceProcessDumpSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMSDeployLogResponder(resp *http.Response) (result MSDeployLog, err error) {
 	err = autorest.Respond(
@@ -11980,7 +11980,7 @@ func (client AppsClient) GetMSDeployLogSlotSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMSDeployLogSlotResponder handles the response to the GetMSDeployLogSlot request. The method always
+// GetInstanceProcessModuleResponder handles the response to the GetInstanceProcessModule request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMSDeployLogSlotResponder(resp *http.Response) (result MSDeployLog, err error) {
 	err = autorest.Respond(
@@ -12065,7 +12065,7 @@ func (client AppsClient) GetMSDeployStatusSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMSDeployStatusResponder handles the response to the GetMSDeployStatus request. The method always
+// GetInstanceProcessModuleSlotResponder handles the response to the GetInstanceProcessModuleSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMSDeployStatusResponder(resp *http.Response) (result MSDeployStatus, err error) {
 	err = autorest.Respond(
@@ -12152,7 +12152,7 @@ func (client AppsClient) GetMSDeployStatusSlotSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetMSDeployStatusSlotResponder handles the response to the GetMSDeployStatusSlot request. The method always
+// GetInstanceProcessSlotResponder handles the response to the GetInstanceProcessSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMSDeployStatusSlotResponder(resp *http.Response) (result MSDeployStatus, err error) {
 	err = autorest.Respond(
@@ -12239,7 +12239,7 @@ func (client AppsClient) GetNetworkTraceOperationSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTraceOperationResponder handles the response to the GetNetworkTraceOperation request. The method always
+// GetInstanceProcessThreadResponder handles the response to the GetInstanceProcessThread request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTraceOperationResponder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12330,7 +12330,7 @@ func (client AppsClient) GetNetworkTraceOperationSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTraceOperationSlotResponder handles the response to the GetNetworkTraceOperationSlot request. The method always
+// GetInstanceProcessThreadSlotResponder handles the response to the GetInstanceProcessThreadSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTraceOperationSlotResponder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12421,7 +12421,7 @@ func (client AppsClient) GetNetworkTraceOperationSlotV2Sender(req *http.Request)
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTraceOperationSlotV2Responder handles the response to the GetNetworkTraceOperationSlotV2 request. The method always
+// GetMigrateMySQLStatusResponder handles the response to the GetMigrateMySQLStatus request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTraceOperationSlotV2Responder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12508,7 +12508,7 @@ func (client AppsClient) GetNetworkTraceOperationV2Sender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTraceOperationV2Responder handles the response to the GetNetworkTraceOperationV2 request. The method always
+// GetMigrateMySQLStatusSlotResponder handles the response to the GetMigrateMySQLStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTraceOperationV2Responder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12595,7 +12595,7 @@ func (client AppsClient) GetNetworkTracesSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTracesResponder handles the response to the GetNetworkTraces request. The method always
+// GetMSDeployLogResponder handles the response to the GetMSDeployLog request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTracesResponder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12685,7 +12685,7 @@ func (client AppsClient) GetNetworkTracesSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTracesSlotResponder handles the response to the GetNetworkTracesSlot request. The method always
+// GetMSDeployLogSlotResponder handles the response to the GetMSDeployLogSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTracesSlotResponder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12775,7 +12775,7 @@ func (client AppsClient) GetNetworkTracesSlotV2Sender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTracesSlotV2Responder handles the response to the GetNetworkTracesSlotV2 request. The method always
+// GetMSDeployStatusResponder handles the response to the GetMSDeployStatus request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTracesSlotV2Responder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12862,7 +12862,7 @@ func (client AppsClient) GetNetworkTracesV2Sender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetNetworkTracesV2Responder handles the response to the GetNetworkTracesV2 request. The method always
+// GetMSDeployStatusSlotResponder handles the response to the GetMSDeployStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetNetworkTracesV2Responder(resp *http.Response) (result ListNetworkTrace, err error) {
 	err = autorest.Respond(
@@ -12949,7 +12949,7 @@ func (client AppsClient) GetPremierAddOnSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPremierAddOnResponder handles the response to the GetPremierAddOn request. The method always
+// GetNetworkTraceOperationResponder handles the response to the GetNetworkTraceOperation request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPremierAddOnResponder(resp *http.Response) (result PremierAddOn, err error) {
 	err = autorest.Respond(
@@ -13039,7 +13039,7 @@ func (client AppsClient) GetPremierAddOnSlotSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPremierAddOnSlotResponder handles the response to the GetPremierAddOnSlot request. The method always
+// GetNetworkTraceOperationSlotResponder handles the response to the GetNetworkTraceOperationSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPremierAddOnSlotResponder(resp *http.Response) (result PremierAddOn, err error) {
 	err = autorest.Respond(
@@ -13125,7 +13125,7 @@ func (client AppsClient) GetPrivateAccessSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPrivateAccessResponder handles the response to the GetPrivateAccess request. The method always
+// GetNetworkTraceOperationSlotV2Responder handles the response to the GetNetworkTraceOperationSlotV2 request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPrivateAccessResponder(resp *http.Response) (result PrivateAccess, err error) {
 	err = autorest.Respond(
@@ -13213,7 +13213,7 @@ func (client AppsClient) GetPrivateAccessSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPrivateAccessSlotResponder handles the response to the GetPrivateAccessSlot request. The method always
+// GetNetworkTraceOperationV2Responder handles the response to the GetNetworkTraceOperationV2 request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPrivateAccessSlotResponder(resp *http.Response) (result PrivateAccess, err error) {
 	err = autorest.Respond(
@@ -13300,7 +13300,7 @@ func (client AppsClient) GetProcessSender(req *http.Request) (*http.Response, er
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessResponder handles the response to the GetProcess request. The method always
+// GetNetworkTracesResponder handles the response to the GetNetworkTraces request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessResponder(resp *http.Response) (result ProcessInfo, err error) {
 	err = autorest.Respond(
@@ -13387,7 +13387,7 @@ func (client AppsClient) GetProcessDumpSender(req *http.Request) (*http.Response
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessDumpResponder handles the response to the GetProcessDump request. The method always
+// GetNetworkTracesSlotResponder handles the response to the GetNetworkTracesSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessDumpResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -13476,7 +13476,7 @@ func (client AppsClient) GetProcessDumpSlotSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessDumpSlotResponder handles the response to the GetProcessDumpSlot request. The method always
+// GetNetworkTracesSlotV2Responder handles the response to the GetNetworkTracesSlotV2 request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessDumpSlotResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -13564,7 +13564,7 @@ func (client AppsClient) GetProcessModuleSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessModuleResponder handles the response to the GetProcessModule request. The method always
+// GetNetworkTracesV2Responder handles the response to the GetNetworkTracesV2 request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessModuleResponder(resp *http.Response) (result ProcessModuleInfo, err error) {
 	err = autorest.Respond(
@@ -13656,7 +13656,7 @@ func (client AppsClient) GetProcessModuleSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessModuleSlotResponder handles the response to the GetProcessModuleSlot request. The method always
+// GetPremierAddOnResponder handles the response to the GetPremierAddOn request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessModuleSlotResponder(resp *http.Response) (result ProcessModuleInfo, err error) {
 	err = autorest.Respond(
@@ -13746,7 +13746,7 @@ func (client AppsClient) GetProcessSlotSender(req *http.Request) (*http.Response
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessSlotResponder handles the response to the GetProcessSlot request. The method always
+// GetPremierAddOnSlotResponder handles the response to the GetPremierAddOnSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessSlotResponder(resp *http.Response) (result ProcessInfo, err error) {
 	err = autorest.Respond(
@@ -13836,7 +13836,7 @@ func (client AppsClient) GetProcessThreadSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessThreadResponder handles the response to the GetProcessThread request. The method always
+// GetPrivateAccessResponder handles the response to the GetPrivateAccess request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessThreadResponder(resp *http.Response) (result ProcessThreadInfo, err error) {
 	err = autorest.Respond(
@@ -13929,7 +13929,7 @@ func (client AppsClient) GetProcessThreadSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetProcessThreadSlotResponder handles the response to the GetProcessThreadSlot request. The method always
+// GetPrivateAccessSlotResponder handles the response to the GetPrivateAccessSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetProcessThreadSlotResponder(resp *http.Response) (result ProcessThreadInfo, err error) {
 	err = autorest.Respond(
@@ -14016,7 +14016,7 @@ func (client AppsClient) GetPublicCertificateSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPublicCertificateResponder handles the response to the GetPublicCertificate request. The method always
+// GetProcessResponder handles the response to the GetProcess request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPublicCertificateResponder(resp *http.Response) (result PublicCertificate, err error) {
 	err = autorest.Respond(
@@ -14106,7 +14106,7 @@ func (client AppsClient) GetPublicCertificateSlotSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetPublicCertificateSlotResponder handles the response to the GetPublicCertificateSlot request. The method always
+// GetProcessDumpResponder handles the response to the GetProcessDump request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetPublicCertificateSlotResponder(resp *http.Response) (result PublicCertificate, err error) {
 	err = autorest.Respond(
@@ -14193,7 +14193,7 @@ func (client AppsClient) GetRelayServiceConnectionSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetRelayServiceConnectionResponder handles the response to the GetRelayServiceConnection request. The method always
+// GetProcessDumpSlotResponder handles the response to the GetProcessDumpSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetRelayServiceConnectionResponder(resp *http.Response) (result RelayServiceConnectionEntity, err error) {
 	err = autorest.Respond(
@@ -14283,7 +14283,7 @@ func (client AppsClient) GetRelayServiceConnectionSlotSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetRelayServiceConnectionSlotResponder handles the response to the GetRelayServiceConnectionSlot request. The method always
+// GetProcessModuleResponder handles the response to the GetProcessModule request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetRelayServiceConnectionSlotResponder(resp *http.Response) (result RelayServiceConnectionEntity, err error) {
 	err = autorest.Respond(
@@ -14370,7 +14370,7 @@ func (client AppsClient) GetSiteExtensionSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSiteExtensionResponder handles the response to the GetSiteExtension request. The method always
+// GetProcessModuleSlotResponder handles the response to the GetProcessModuleSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSiteExtensionResponder(resp *http.Response) (result SiteExtensionInfo, err error) {
 	err = autorest.Respond(
@@ -14460,7 +14460,7 @@ func (client AppsClient) GetSiteExtensionSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSiteExtensionSlotResponder handles the response to the GetSiteExtensionSlot request. The method always
+// GetProcessSlotResponder handles the response to the GetProcessSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSiteExtensionSlotResponder(resp *http.Response) (result SiteExtensionInfo, err error) {
 	err = autorest.Respond(
@@ -14545,7 +14545,7 @@ func (client AppsClient) GetSitePhpErrorLogFlagSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSitePhpErrorLogFlagResponder handles the response to the GetSitePhpErrorLogFlag request. The method always
+// GetProcessThreadResponder handles the response to the GetProcessThread request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSitePhpErrorLogFlagResponder(resp *http.Response) (result SitePhpErrorLogFlag, err error) {
 	err = autorest.Respond(
@@ -14632,7 +14632,7 @@ func (client AppsClient) GetSitePhpErrorLogFlagSlotSender(req *http.Request) (*h
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSitePhpErrorLogFlagSlotResponder handles the response to the GetSitePhpErrorLogFlagSlot request. The method always
+// GetProcessThreadSlotResponder handles the response to the GetProcessThreadSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSitePhpErrorLogFlagSlotResponder(resp *http.Response) (result SitePhpErrorLogFlag, err error) {
 	err = autorest.Respond(
@@ -14719,7 +14719,7 @@ func (client AppsClient) GetSlotSender(req *http.Request) (*http.Response, error
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSlotResponder handles the response to the GetSlot request. The method always
+// GetPublicCertificateResponder handles the response to the GetPublicCertificate request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSlotResponder(resp *http.Response) (result Site, err error) {
 	err = autorest.Respond(
@@ -14804,7 +14804,7 @@ func (client AppsClient) GetSourceControlSender(req *http.Request) (*http.Respon
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSourceControlResponder handles the response to the GetSourceControl request. The method always
+// GetPublicCertificateSlotResponder handles the response to the GetPublicCertificateSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSourceControlResponder(resp *http.Response) (result SiteSourceControl, err error) {
 	err = autorest.Respond(
@@ -14892,7 +14892,7 @@ func (client AppsClient) GetSourceControlSlotSender(req *http.Request) (*http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSourceControlSlotResponder handles the response to the GetSourceControlSlot request. The method always
+// GetRelayServiceConnectionResponder handles the response to the GetRelayServiceConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSourceControlSlotResponder(resp *http.Response) (result SiteSourceControl, err error) {
 	err = autorest.Respond(
@@ -14977,7 +14977,7 @@ func (client AppsClient) GetSwiftVirtualNetworkConnectionSender(req *http.Reques
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSwiftVirtualNetworkConnectionResponder handles the response to the GetSwiftVirtualNetworkConnection request. The method always
+// GetRelayServiceConnectionSlotResponder handles the response to the GetRelayServiceConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSwiftVirtualNetworkConnectionResponder(resp *http.Response) (result SwiftVirtualNetwork, err error) {
 	err = autorest.Respond(
@@ -15065,7 +15065,7 @@ func (client AppsClient) GetSwiftVirtualNetworkConnectionSlotSender(req *http.Re
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetSwiftVirtualNetworkConnectionSlotResponder handles the response to the GetSwiftVirtualNetworkConnectionSlot request. The method always
+// GetSiteExtensionResponder handles the response to the GetSiteExtension request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetSwiftVirtualNetworkConnectionSlotResponder(resp *http.Response) (result SwiftVirtualNetwork, err error) {
 	err = autorest.Respond(
@@ -15241,7 +15241,7 @@ func (client AppsClient) GetTriggeredWebJobHistorySender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetTriggeredWebJobHistoryResponder handles the response to the GetTriggeredWebJobHistory request. The method always
+// GetSitePhpErrorLogFlagResponder handles the response to the GetSitePhpErrorLogFlag request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetTriggeredWebJobHistoryResponder(resp *http.Response) (result TriggeredJobHistory, err error) {
 	err = autorest.Respond(
@@ -15333,7 +15333,7 @@ func (client AppsClient) GetTriggeredWebJobHistorySlotSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetTriggeredWebJobHistorySlotResponder handles the response to the GetTriggeredWebJobHistorySlot request. The method always
+// GetSitePhpErrorLogFlagSlotResponder handles the response to the GetSitePhpErrorLogFlagSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetTriggeredWebJobHistorySlotResponder(resp *http.Response) (result TriggeredJobHistory, err error) {
 	err = autorest.Respond(
@@ -15423,7 +15423,7 @@ func (client AppsClient) GetTriggeredWebJobSlotSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetTriggeredWebJobSlotResponder handles the response to the GetTriggeredWebJobSlot request. The method always
+// GetSlotResponder handles the response to the GetSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetTriggeredWebJobSlotResponder(resp *http.Response) (result TriggeredWebJob, err error) {
 	err = autorest.Respond(
@@ -15510,7 +15510,7 @@ func (client AppsClient) GetVnetConnectionSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetVnetConnectionResponder handles the response to the GetVnetConnection request. The method always
+// GetSourceControlResponder handles the response to the GetSourceControl request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetVnetConnectionResponder(resp *http.Response) (result VnetInfo, err error) {
 	err = autorest.Respond(
@@ -15599,7 +15599,7 @@ func (client AppsClient) GetVnetConnectionGatewaySender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetVnetConnectionGatewayResponder handles the response to the GetVnetConnectionGateway request. The method always
+// GetSourceControlSlotResponder handles the response to the GetSourceControlSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetVnetConnectionGatewayResponder(resp *http.Response) (result VnetGateway, err error) {
 	err = autorest.Respond(
@@ -15691,7 +15691,7 @@ func (client AppsClient) GetVnetConnectionGatewaySlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetVnetConnectionGatewaySlotResponder handles the response to the GetVnetConnectionGatewaySlot request. The method always
+// GetSwiftVirtualNetworkConnectionResponder handles the response to the GetSwiftVirtualNetworkConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetVnetConnectionGatewaySlotResponder(resp *http.Response) (result VnetGateway, err error) {
 	err = autorest.Respond(
@@ -15781,7 +15781,7 @@ func (client AppsClient) GetVnetConnectionSlotSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetVnetConnectionSlotResponder handles the response to the GetVnetConnectionSlot request. The method always
+// GetSwiftVirtualNetworkConnectionSlotResponder handles the response to the GetSwiftVirtualNetworkConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetVnetConnectionSlotResponder(resp *http.Response) (result VnetInfo, err error) {
 	err = autorest.Respond(
@@ -15868,7 +15868,7 @@ func (client AppsClient) GetWebJobSender(req *http.Request) (*http.Response, err
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetWebJobResponder handles the response to the GetWebJob request. The method always
+// GetTriggeredWebJobResponder handles the response to the GetTriggeredWebJob request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetWebJobResponder(resp *http.Response) (result Job, err error) {
 	err = autorest.Respond(
@@ -15958,7 +15958,7 @@ func (client AppsClient) GetWebJobSlotSender(req *http.Request) (*http.Response,
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetWebJobSlotResponder handles the response to the GetWebJobSlot request. The method always
+// GetTriggeredWebJobHistoryResponder handles the response to the GetTriggeredWebJobHistory request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetWebJobSlotResponder(resp *http.Response) (result Job, err error) {
 	err = autorest.Respond(
@@ -16043,7 +16043,7 @@ func (client AppsClient) GetWebSiteContainerLogsSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetWebSiteContainerLogsResponder handles the response to the GetWebSiteContainerLogs request. The method always
+// GetTriggeredWebJobHistorySlotResponder handles the response to the GetTriggeredWebJobHistorySlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetWebSiteContainerLogsResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -16129,7 +16129,7 @@ func (client AppsClient) GetWebSiteContainerLogsSlotSender(req *http.Request) (*
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// GetWebSiteContainerLogsSlotResponder handles the response to the GetWebSiteContainerLogsSlot request. The method always
+// GetTriggeredWebJobSlotResponder handles the response to the GetTriggeredWebJobSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetWebSiteContainerLogsSlotResponder(resp *http.Response) (result ReadCloser, err error) {
 	result.Value = &resp.Body
@@ -16215,7 +16215,7 @@ func (client AppsClient) InstallSiteExtensionSender(req *http.Request) (future A
 	return
 }
 
-// InstallSiteExtensionResponder handles the response to the InstallSiteExtension request. The method always
+// GetVnetConnectionResponder handles the response to the GetVnetConnection request. The method always
 // closes the http.Response Body.
 func (client AppsClient) InstallSiteExtensionResponder(resp *http.Response) (result SiteExtensionInfo, err error) {
 	err = autorest.Respond(
@@ -16305,7 +16305,7 @@ func (client AppsClient) InstallSiteExtensionSlotSender(req *http.Request) (futu
 	return
 }
 
-// InstallSiteExtensionSlotResponder handles the response to the InstallSiteExtensionSlot request. The method always
+// GetVnetConnectionGatewayResponder handles the response to the GetVnetConnectionGateway request. The method always
 // closes the http.Response Body.
 func (client AppsClient) InstallSiteExtensionSlotResponder(resp *http.Response) (result SiteExtensionInfo, err error) {
 	err = autorest.Respond(
@@ -16390,7 +16390,7 @@ func (client AppsClient) IsCloneableSender(req *http.Request) (*http.Response, e
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// IsCloneableResponder handles the response to the IsCloneable request. The method always
+// GetVnetConnectionGatewaySlotResponder handles the response to the GetVnetConnectionGatewaySlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) IsCloneableResponder(resp *http.Response) (result SiteCloneability, err error) {
 	err = autorest.Respond(
@@ -16477,7 +16477,7 @@ func (client AppsClient) IsCloneableSlotSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// IsCloneableSlotResponder handles the response to the IsCloneableSlot request. The method always
+// GetVnetConnectionSlotResponder handles the response to the GetVnetConnectionSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) IsCloneableSlotResponder(resp *http.Response) (result SiteCloneability, err error) {
 	err = autorest.Respond(
@@ -16550,7 +16550,7 @@ func (client AppsClient) ListSender(req *http.Request) (*http.Response, error) {
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListResponder handles the response to the List request. The method always
+// GetWebJobResponder handles the response to the GetWebJob request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListResponder(resp *http.Response) (result AppCollection, err error) {
 	err = autorest.Respond(
@@ -16672,7 +16672,7 @@ func (client AppsClient) ListApplicationSettingsSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListApplicationSettingsResponder handles the response to the ListApplicationSettings request. The method always
+// GetWebJobSlotResponder handles the response to the GetWebJobSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListApplicationSettingsResponder(resp *http.Response) (result StringDictionary, err error) {
 	err = autorest.Respond(
@@ -16760,7 +16760,7 @@ func (client AppsClient) ListApplicationSettingsSlotSender(req *http.Request) (*
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListApplicationSettingsSlotResponder handles the response to the ListApplicationSettingsSlot request. The method always
+// GetWebSiteContainerLogsResponder handles the response to the GetWebSiteContainerLogs request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListApplicationSettingsSlotResponder(resp *http.Response) (result StringDictionary, err error) {
 	err = autorest.Respond(
@@ -16845,7 +16845,7 @@ func (client AppsClient) ListAzureStorageAccountsSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListAzureStorageAccountsResponder handles the response to the ListAzureStorageAccounts request. The method always
+// GetWebSiteContainerLogsSlotResponder handles the response to the GetWebSiteContainerLogsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListAzureStorageAccountsResponder(resp *http.Response) (result AzureStoragePropertyDictionaryResource, err error) {
 	err = autorest.Respond(
@@ -16933,7 +16933,7 @@ func (client AppsClient) ListAzureStorageAccountsSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListAzureStorageAccountsSlotResponder handles the response to the ListAzureStorageAccountsSlot request. The method always
+// IsCloneableResponder handles the response to the IsCloneable request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListAzureStorageAccountsSlotResponder(resp *http.Response) (result AzureStoragePropertyDictionaryResource, err error) {
 	err = autorest.Respond(
@@ -17019,7 +17019,7 @@ func (client AppsClient) ListBackupsSender(req *http.Request) (*http.Response, e
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListBackupsResponder handles the response to the ListBackups request. The method always
+// ListByResourceGroupResponder handles the response to the ListByResourceGroup request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListBackupsResponder(resp *http.Response) (result BackupItemCollection, err error) {
 	err = autorest.Respond(
@@ -17145,7 +17145,7 @@ func (client AppsClient) ListBackupsSlotSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListBackupsSlotResponder handles the response to the ListBackupsSlot request. The method always
+// ListConfigurationsResponder handles the response to the ListConfigurations request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListBackupsSlotResponder(resp *http.Response) (result BackupItemCollection, err error) {
 	err = autorest.Respond(
@@ -17283,7 +17283,7 @@ func (client AppsClient) ListBackupStatusSecretsSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListBackupStatusSecretsResponder handles the response to the ListBackupStatusSecrets request. The method always
+// ListConfigurationSnapshotInfoResponder handles the response to the ListConfigurationSnapshotInfo request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListBackupStatusSecretsResponder(resp *http.Response) (result BackupItem, err error) {
 	err = autorest.Respond(
@@ -17475,7 +17475,7 @@ func (client AppsClient) ListByResourceGroupSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListByResourceGroupResponder handles the response to the ListByResourceGroup request. The method always
+// ListConfigurationSnapshotInfoSlotResponder handles the response to the ListConfigurationSnapshotInfoSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListByResourceGroupResponder(resp *http.Response) (result AppCollection, err error) {
 	err = autorest.Respond(
@@ -17598,7 +17598,7 @@ func (client AppsClient) ListConfigurationsSender(req *http.Request) (*http.Resp
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConfigurationsResponder handles the response to the ListConfigurations request. The method always
+// ListConfigurationsSlotResponder handles the response to the ListConfigurationsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConfigurationsResponder(resp *http.Response) (result SiteConfigResourceCollection, err error) {
 	err = autorest.Respond(
@@ -17722,7 +17722,7 @@ func (client AppsClient) ListConfigurationSnapshotInfoSender(req *http.Request) 
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConfigurationSnapshotInfoResponder handles the response to the ListConfigurationSnapshotInfo request. The method always
+// ListConnectionStringsResponder handles the response to the ListConnectionStrings request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConfigurationSnapshotInfoResponder(resp *http.Response) (result SiteConfigurationSnapshotInfoCollection, err error) {
 	err = autorest.Respond(
@@ -17849,7 +17849,7 @@ func (client AppsClient) ListConfigurationSnapshotInfoSlotSender(req *http.Reque
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConfigurationSnapshotInfoSlotResponder handles the response to the ListConfigurationSnapshotInfoSlot request. The method always
+// ListConnectionStringsSlotResponder handles the response to the ListConnectionStringsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConfigurationSnapshotInfoSlotResponder(resp *http.Response) (result SiteConfigurationSnapshotInfoCollection, err error) {
 	err = autorest.Respond(
@@ -17975,7 +17975,7 @@ func (client AppsClient) ListConfigurationsSlotSender(req *http.Request) (*http.
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConfigurationsSlotResponder handles the response to the ListConfigurationsSlot request. The method always
+// ListContinuousWebJobsResponder handles the response to the ListContinuousWebJobs request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConfigurationsSlotResponder(resp *http.Response) (result SiteConfigResourceCollection, err error) {
 	err = autorest.Respond(
@@ -18097,7 +18097,7 @@ func (client AppsClient) ListConnectionStringsSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConnectionStringsResponder handles the response to the ListConnectionStrings request. The method always
+// ListContinuousWebJobsSlotResponder handles the response to the ListContinuousWebJobsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConnectionStringsResponder(resp *http.Response) (result ConnectionStringDictionary, err error) {
 	err = autorest.Respond(
@@ -18185,7 +18185,7 @@ func (client AppsClient) ListConnectionStringsSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListConnectionStringsSlotResponder handles the response to the ListConnectionStringsSlot request. The method always
+// ListDeploymentLogResponder handles the response to the ListDeploymentLog request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListConnectionStringsSlotResponder(resp *http.Response) (result ConnectionStringDictionary, err error) {
 	err = autorest.Respond(
@@ -18271,7 +18271,7 @@ func (client AppsClient) ListContinuousWebJobsSender(req *http.Request) (*http.R
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListContinuousWebJobsResponder handles the response to the ListContinuousWebJobs request. The method always
+// ListDeploymentLogSlotResponder handles the response to the ListDeploymentLogSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListContinuousWebJobsResponder(resp *http.Response) (result ContinuousWebJobCollection, err error) {
 	err = autorest.Respond(
@@ -18397,7 +18397,7 @@ func (client AppsClient) ListContinuousWebJobsSlotSender(req *http.Request) (*ht
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListContinuousWebJobsSlotResponder handles the response to the ListContinuousWebJobsSlot request. The method always
+// ListDeploymentsResponder handles the response to the ListDeployments request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListContinuousWebJobsSlotResponder(resp *http.Response) (result ContinuousWebJobCollection, err error) {
 	err = autorest.Respond(
@@ -18522,7 +18522,7 @@ func (client AppsClient) ListDeploymentLogSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListDeploymentLogResponder handles the response to the ListDeploymentLog request. The method always
+// ListDeploymentsSlotResponder handles the response to the ListDeploymentsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListDeploymentLogResponder(resp *http.Response) (result Deployment, err error) {
 	err = autorest.Respond(
@@ -18699,7 +18699,7 @@ func (client AppsClient) ListDeploymentsSender(req *http.Request) (*http.Respons
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListDeploymentsResponder handles the response to the ListDeployments request. The method always
+// ListDomainOwnershipIdentifiersSlotResponder handles the response to the ListDomainOwnershipIdentifiersSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListDeploymentsResponder(resp *http.Response) (result DeploymentCollection, err error) {
 	err = autorest.Respond(
@@ -18825,7 +18825,7 @@ func (client AppsClient) ListDeploymentsSlotSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListDeploymentsSlotResponder handles the response to the ListDeploymentsSlot request. The method always
+// ListFunctionKeysResponder handles the response to the ListFunctionKeys request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListDeploymentsSlotResponder(resp *http.Response) (result DeploymentCollection, err error) {
 	err = autorest.Respond(
@@ -18948,7 +18948,7 @@ func (client AppsClient) ListDomainOwnershipIdentifiersSender(req *http.Request)
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListDomainOwnershipIdentifiersResponder handles the response to the ListDomainOwnershipIdentifiers request. The method always
+// ListFunctionsResponder handles the response to the ListFunctions request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListDomainOwnershipIdentifiersResponder(resp *http.Response) (result IdentifierCollection, err error) {
 	err = autorest.Respond(
@@ -19074,7 +19074,7 @@ func (client AppsClient) ListDomainOwnershipIdentifiersSlotSender(req *http.Requ
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListDomainOwnershipIdentifiersSlotResponder handles the response to the ListDomainOwnershipIdentifiersSlot request. The method always
+// ListFunctionSecretsResponder handles the response to the ListFunctionSecrets request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListDomainOwnershipIdentifiersSlotResponder(resp *http.Response) (result IdentifierCollection, err error) {
 	err = autorest.Respond(
@@ -19373,7 +19373,7 @@ func (client AppsClient) ListFunctionsSender(req *http.Request) (*http.Response,
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListFunctionsResponder handles the response to the ListFunctions request. The method always
+// ListFunctionSecretsSlotResponder handles the response to the ListFunctionSecretsSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListFunctionsResponder(resp *http.Response) (result FunctionEnvelopeCollection, err error) {
 	err = autorest.Respond(
@@ -19497,7 +19497,7 @@ func (client AppsClient) ListFunctionSecretsSender(req *http.Request) (*http.Res
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListFunctionSecretsResponder handles the response to the ListFunctionSecrets request. The method always
+// ListHostKeysResponder handles the response to the ListHostKeys request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListFunctionSecretsResponder(resp *http.Response) (result FunctionSecrets, err error) {
 	err = autorest.Respond(
@@ -19586,7 +19586,7 @@ func (client AppsClient) ListFunctionSecretsSlotSender(req *http.Request) (*http
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListFunctionSecretsSlotResponder handles the response to the ListFunctionSecretsSlot request. The method always
+// ListHostKeysSlotResponder handles the response to the ListHostKeysSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListFunctionSecretsSlotResponder(resp *http.Response) (result FunctionSecrets, err error) {
 	err = autorest.Respond(
@@ -25692,7 +25692,7 @@ func (client AppsClient) ListSnapshotsSlotSender(req *http.Request) (*http.Respo
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListSnapshotsSlotResponder handles the response to the ListSnapshotsSlot request. The method always
+// ListSyncFunctionTriggersSlotResponder handles the response to the ListSyncFunctionTriggersSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListSnapshotsSlotResponder(resp *http.Response) (result SnapshotCollection, err error) {
 	err = autorest.Respond(
@@ -25814,7 +25814,7 @@ func (client AppsClient) ListSyncFunctionTriggersSender(req *http.Request) (*htt
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListSyncFunctionTriggersResponder handles the response to the ListSyncFunctionTriggers request. The method always
+// ListSyncStatusResponder handles the response to the ListSyncStatus request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListSyncFunctionTriggersResponder(resp *http.Response) (result FunctionSecrets, err error) {
 	err = autorest.Respond(
@@ -25901,7 +25901,7 @@ func (client AppsClient) ListSyncFunctionTriggersSlotSender(req *http.Request) (
 	return autorest.SendWithSender(client, req, sd...)
 }
 
-// ListSyncFunctionTriggersSlotResponder handles the response to the ListSyncFunctionTriggersSlot request. The method always
+// ListSyncStatusSlotResponder handles the response to the ListSyncStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) ListSyncFunctionTriggersSlotResponder(resp *http.Response) (result FunctionSecrets, err error) {
 	err = autorest.Respond(

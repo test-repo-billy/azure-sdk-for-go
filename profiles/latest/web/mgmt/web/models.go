@@ -22,7 +22,7 @@ package web
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/web/mgmt/2018-02-01/web"
+	original "github.com/Azure/azure-sdk-for-go/services/web/mgmt/2019-08-01/web"
 )
 
 const (
@@ -887,6 +887,7 @@ type GeoRegionProperties = original.GeoRegionProperties
 type GlobalCsmSkuDescription = original.GlobalCsmSkuDescription
 type HTTPLogsConfig = original.HTTPLogsConfig
 type HandlerMapping = original.HandlerMapping
+type HostKeys = original.HostKeys
 type HostName = original.HostName
 type HostNameBinding = original.HostNameBinding
 type HostNameBindingCollection = original.HostNameBindingCollection
@@ -921,6 +922,7 @@ type JobCollection = original.JobCollection
 type JobCollectionIterator = original.JobCollectionIterator
 type JobCollectionPage = original.JobCollectionPage
 type JobProperties = original.JobProperties
+type KeyInfo = original.KeyInfo
 type ListCapability = original.ListCapability
 type ListCertificateEmail = original.ListCertificateEmail
 type ListCertificateOrderAction = original.ListCertificateOrderAction

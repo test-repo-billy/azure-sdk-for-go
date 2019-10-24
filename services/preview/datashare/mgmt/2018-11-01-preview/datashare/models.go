@@ -6487,9 +6487,9 @@ func NewSourceShareSynchronizationSettingListPage(getNextPage func(context.Conte
 	return SourceShareSynchronizationSettingListPage{fn: getNextPage}
 }
 
-// SQLDBTableDataSet a SQL DB table dataset.
+// SQLDBTableDataSet a SQL DB table data set.
 type SQLDBTableDataSet struct {
-	// SQLDBTableProperties - SQL DB table dataset properties.
+	// SQLDBTableProperties - SQL DB table data set properties.
 	*SQLDBTableProperties `json:"properties,omitempty"`
 	// Kind - Possible values include: 'KindDataSet', 'KindBlob', 'KindBlobFolder', 'KindContainer', 'KindAdlsGen2File', 'KindAdlsGen2Folder', 'KindAdlsGen2FileSystem', 'KindAdlsGen1Folder', 'KindAdlsGen1File', 'KindSQLDWTable', 'KindSQLDBTable'
 	Kind Kind `json:"kind,omitempty"`
@@ -6634,9 +6634,9 @@ func (sdtds *SQLDBTableDataSet) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// SQLDBTableDataSetMapping a SQL DB Table dataset mapping.
+// SQLDBTableDataSetMapping a SQL DB Table data set mapping.
 type SQLDBTableDataSetMapping struct {
-	// SQLDBTableDataSetMappingProperties - Sql DB dataset mapping properties.
+	// SQLDBTableDataSetMappingProperties - Sql DB data set mapping properties.
 	*SQLDBTableDataSetMappingProperties `json:"properties,omitempty"`
 	// Kind - Possible values include: 'KindBasicDataSetMappingKindDataSetMapping', 'KindBasicDataSetMappingKindBlob', 'KindBasicDataSetMappingKindBlobFolder', 'KindBasicDataSetMappingKindContainer', 'KindBasicDataSetMappingKindAdlsGen2File', 'KindBasicDataSetMappingKindAdlsGen2Folder', 'KindBasicDataSetMappingKindAdlsGen2FileSystem', 'KindBasicDataSetMappingKindSQLDWTable', 'KindBasicDataSetMappingKindSQLDBTable'
 	Kind KindBasicDataSetMapping `json:"kind,omitempty"`
@@ -6775,9 +6775,9 @@ func (sdtdsm *SQLDBTableDataSetMapping) UnmarshalJSON(body []byte) error {
 type SQLDBTableDataSetMappingProperties struct {
 	// DatabaseName - DatabaseName name of the sink data set
 	DatabaseName *string `json:"databaseName,omitempty"`
-	// DataSetID - Gets the id of source dataset.
+	// DataSetID - The id of the source data set.
 	DataSetID *string `json:"dataSetId,omitempty"`
-	// DataSetMappingStatus - Gets the status of the dataset mapping. Possible values include: 'Ok', 'Broken'
+	// DataSetMappingStatus - Gets the status of the data set mapping. Possible values include: 'Ok', 'Broken'
 	DataSetMappingStatus DataSetMappingStatus `json:"dataSetMappingStatus,omitempty"`
 	// SQLServerResourceID - Resource id of SQL server
 	SQLServerResourceID *string `json:"sqlServerResourceId,omitempty"`
@@ -6797,9 +6797,9 @@ type SQLDBTableProperties struct {
 	TableName *string `json:"tableName,omitempty"`
 }
 
-// SQLDWTableDataSet a SQL DW table dataset.
+// SQLDWTableDataSet a SQL DW table data set.
 type SQLDWTableDataSet struct {
-	// SQLDWTableProperties - SQL DW table dataset properties.
+	// SQLDWTableProperties - SQL DW table data set properties.
 	*SQLDWTableProperties `json:"properties,omitempty"`
 	// Kind - Possible values include: 'KindDataSet', 'KindBlob', 'KindBlobFolder', 'KindContainer', 'KindAdlsGen2File', 'KindAdlsGen2Folder', 'KindAdlsGen2FileSystem', 'KindAdlsGen1Folder', 'KindAdlsGen1File', 'KindSQLDWTable', 'KindSQLDBTable'
 	Kind Kind `json:"kind,omitempty"`
@@ -6944,9 +6944,9 @@ func (sdtds *SQLDWTableDataSet) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// SQLDWTableDataSetMapping a SQL DW Table dataset mapping.
+// SQLDWTableDataSetMapping a SQL DW Table data set mapping.
 type SQLDWTableDataSetMapping struct {
-	// SQLDWTableDataSetMappingProperties - Sql DW dataset mapping properties.
+	// SQLDWTableDataSetMappingProperties - Sql DW data set mapping properties.
 	*SQLDWTableDataSetMappingProperties `json:"properties,omitempty"`
 	// Kind - Possible values include: 'KindBasicDataSetMappingKindDataSetMapping', 'KindBasicDataSetMappingKindBlob', 'KindBasicDataSetMappingKindBlobFolder', 'KindBasicDataSetMappingKindContainer', 'KindBasicDataSetMappingKindAdlsGen2File', 'KindBasicDataSetMappingKindAdlsGen2Folder', 'KindBasicDataSetMappingKindAdlsGen2FileSystem', 'KindBasicDataSetMappingKindSQLDWTable', 'KindBasicDataSetMappingKindSQLDBTable'
 	Kind KindBasicDataSetMapping `json:"kind,omitempty"`
@@ -7083,9 +7083,9 @@ func (sdtdsm *SQLDWTableDataSetMapping) UnmarshalJSON(body []byte) error {
 
 // SQLDWTableDataSetMappingProperties properties of the SQL DW table data set mapping.
 type SQLDWTableDataSetMappingProperties struct {
-	// DataSetID - Gets the id of source dataset.
+	// DataSetID - The id of the source data set.
 	DataSetID *string `json:"dataSetId,omitempty"`
-	// DataSetMappingStatus - Gets the status of the dataset mapping. Possible values include: 'Ok', 'Broken'
+	// DataSetMappingStatus - Gets the status of the data set mapping. Possible values include: 'Ok', 'Broken'
 	DataSetMappingStatus DataSetMappingStatus `json:"dataSetMappingStatus,omitempty"`
 	// DataWarehouseName - DataWarehouse name of the source data set
 	DataWarehouseName *string `json:"dataWarehouseName,omitempty"`
@@ -7107,7 +7107,7 @@ type SQLDWTableProperties struct {
 	TableName *string `json:"tableName,omitempty"`
 }
 
-// SynchronizationDetails synchronization details at dataset level
+// SynchronizationDetails synchronization details at data set level
 type SynchronizationDetails struct {
 	// DataSetID - READ-ONLY; id of dataSet
 	DataSetID *string `json:"dataSetId,omitempty"`
@@ -7125,11 +7125,11 @@ type SynchronizationDetails struct {
 	Message *string `json:"message,omitempty"`
 	// Name - READ-ONLY; name of dataSet
 	Name *string `json:"name,omitempty"`
-	// RowsCopied - READ-ONLY; The number of files copied into the sink dataset.
+	// RowsCopied - READ-ONLY; The number of files copied into the sink data set.
 	RowsCopied *int64 `json:"rowsCopied,omitempty"`
-	// RowsRead - READ-ONLY; The number of rows read from the source dataset.
+	// RowsRead - READ-ONLY; The number of rows read from the source data set.
 	RowsRead *int64 `json:"rowsRead,omitempty"`
-	// SizeRead - READ-ONLY; The size of the data read from the source dataset in bytes.
+	// SizeRead - READ-ONLY; The size of the data read from the source data set in bytes.
 	SizeRead *int64 `json:"sizeRead,omitempty"`
 	// SizeWritten - READ-ONLY; The size of the data written into the sink data set in bytes.
 	SizeWritten *int64 `json:"sizeWritten,omitempty"`

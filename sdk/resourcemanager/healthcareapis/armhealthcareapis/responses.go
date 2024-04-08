@@ -171,12 +171,6 @@ type ServicesClientCheckNameAvailabilityResponse struct {
 	ServicesNameAvailabilityInfo
 }
 
-// ServicesClientCreateOrUpdateResponse contains the response from method ServicesClient.BeginCreateOrUpdate.
-type ServicesClientCreateOrUpdateResponse struct {
-	// The description of the service.
-	ServicesDescription
-}
-
 // ServicesClientDeleteResponse contains the response from method ServicesClient.BeginDelete.
 type ServicesClientDeleteResponse struct {
 	// placeholder for future response values

@@ -1,5 +1,20 @@
 # Release History
 
+## 3.0.0 (2024-04-08)
+### Breaking Changes
+
+- Function `*ServicesClient.BeginCreateOrUpdate` has been removed
+
+### Features Added
+
+- New enum type `SmartDataActions` with values `SmartDataActionsRead`
+- New struct `SmartIdentityProviderApplication`
+- New struct `SmartIdentityProviderConfiguration`
+- New struct `StorageConfiguration`
+- New field `StorageConfiguration` in struct `DicomServiceProperties`
+- New field `SmartIdentityProviders` in struct `FhirServiceAuthenticationConfiguration`
+
+
 ## 2.0.0 (2023-12-22)
 ### Breaking Changes
 

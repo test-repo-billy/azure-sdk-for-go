@@ -25,12 +25,6 @@ type ApplicationGroupClientGetResponse struct {
 	ApplicationGroup
 }
 
-// ApplicationGroupClientListByNamespaceResponse contains the response from method ApplicationGroupClient.NewListByNamespacePager.
-type ApplicationGroupClientListByNamespaceResponse struct {
-	// The response from the List Application Groups operation.
-	ApplicationGroupListResult
-}
-
 // ClustersClientCreateOrUpdateResponse contains the response from method ClustersClient.BeginCreateOrUpdate.
 type ClustersClientCreateOrUpdateResponse struct {
 	// Single Event Hubs Cluster resource in List or Get operations.
@@ -70,6 +64,11 @@ type ClustersClientListBySubscriptionResponse struct {
 type ClustersClientListNamespacesResponse struct {
 	// The response of the List Namespace IDs operation
 	EHNamespaceIDListResult
+}
+
+// ClustersClientTriggerUpgradePostResponse contains the response from method ClustersClient.TriggerUpgradePost.
+type ClustersClientTriggerUpgradePostResponse struct {
+	// placeholder for future response values
 }
 
 // ClustersClientUpdateResponse contains the response from method ClustersClient.BeginUpdate.

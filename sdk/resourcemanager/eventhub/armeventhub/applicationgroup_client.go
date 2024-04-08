@@ -47,7 +47,7 @@ func NewApplicationGroupClient(subscriptionID string, credential azcore.TokenCre
 // CreateOrUpdateApplicationGroup - Creates or updates an ApplicationGroup for a Namespace.
 // If the operation fails it returns an *azcore.ResponseError type.
 //
-// Generated from API version 2022-10-01-preview
+// Generated from API version 2024-01-01
 //   - resourceGroupName - Name of the resource group within the azure subscription.
 //   - namespaceName - The Namespace name
 //   - applicationGroupName - The Application Group name
@@ -100,7 +100,7 @@ func (client *ApplicationGroupClient) createOrUpdateApplicationGroupCreateReques
 		return nil, err
 	}
 	reqQP := req.Raw().URL.Query()
-	reqQP.Set("api-version", "2022-10-01-preview")
+	reqQP.Set("api-version", "2024-01-01")
 	req.Raw().URL.RawQuery = reqQP.Encode()
 	req.Raw().Header["Accept"] = []string{"application/json"}
 	if err := runtime.MarshalAsJSON(req, parameters); err != nil {
@@ -121,7 +121,7 @@ func (client *ApplicationGroupClient) createOrUpdateApplicationGroupHandleRespon
 // Delete - Deletes an ApplicationGroup for a Namespace.
 // If the operation fails it returns an *azcore.ResponseError type.
 //
-// Generated from API version 2022-10-01-preview
+// Generated from API version 2024-01-01
 //   - resourceGroupName - Name of the resource group within the azure subscription.
 //   - namespaceName - The Namespace name
 //   - applicationGroupName - The Application Group name
@@ -171,7 +171,7 @@ func (client *ApplicationGroupClient) deleteCreateRequest(ctx context.Context, r
 		return nil, err
 	}
 	reqQP := req.Raw().URL.Query()
-	reqQP.Set("api-version", "2022-10-01-preview")
+	reqQP.Set("api-version", "2024-01-01")
 	req.Raw().URL.RawQuery = reqQP.Encode()
 	req.Raw().Header["Accept"] = []string{"application/json"}
 	return req, nil
@@ -180,7 +180,7 @@ func (client *ApplicationGroupClient) deleteCreateRequest(ctx context.Context, r
 // Get - Gets an ApplicationGroup for a Namespace.
 // If the operation fails it returns an *azcore.ResponseError type.
 //
-// Generated from API version 2022-10-01-preview
+// Generated from API version 2024-01-01
 //   - resourceGroupName - Name of the resource group within the azure subscription.
 //   - namespaceName - The Namespace name
 //   - applicationGroupName - The Application Group name
@@ -231,7 +231,7 @@ func (client *ApplicationGroupClient) getCreateRequest(ctx context.Context, reso
 		return nil, err
 	}
 	reqQP := req.Raw().URL.Query()
-	reqQP.Set("api-version", "2022-10-01-preview")
+	reqQP.Set("api-version", "2024-01-01")
 	req.Raw().URL.RawQuery = reqQP.Encode()
 	req.Raw().Header["Accept"] = []string{"application/json"}
 	return req, nil
@@ -242,71 +242,6 @@ func (client *ApplicationGroupClient) getHandleResponse(resp *http.Response) (Ap
 	result := ApplicationGroupClientGetResponse{}
 	if err := runtime.UnmarshalAsJSON(resp, &result.ApplicationGroup); err != nil {
 		return ApplicationGroupClientGetResponse{}, err
-	}
-	return result, nil
-}
-
-// NewListByNamespacePager - Gets a list of application groups for a Namespace.
-//
-// Generated from API version 2022-10-01-preview
-//   - resourceGroupName - Name of the resource group within the azure subscription.
-//   - namespaceName - The Namespace name
-//   - options - ApplicationGroupClientListByNamespaceOptions contains the optional parameters for the ApplicationGroupClient.NewListByNamespacePager
-//     method.
-func (client *ApplicationGroupClient) NewListByNamespacePager(resourceGroupName string, namespaceName string, options *ApplicationGroupClientListByNamespaceOptions) *runtime.Pager[ApplicationGroupClientListByNamespaceResponse] {
-	return runtime.NewPager(runtime.PagingHandler[ApplicationGroupClientListByNamespaceResponse]{
-		More: func(page ApplicationGroupClientListByNamespaceResponse) bool {
-			return page.NextLink != nil && len(*page.NextLink) > 0
-		},
-		Fetcher: func(ctx context.Context, page *ApplicationGroupClientListByNamespaceResponse) (ApplicationGroupClientListByNamespaceResponse, error) {
-			ctx = context.WithValue(ctx, runtime.CtxAPINameKey{}, "ApplicationGroupClient.NewListByNamespacePager")
-			nextLink := ""
-			if page != nil {
-				nextLink = *page.NextLink
-			}
-			resp, err := runtime.FetcherForNextLink(ctx, client.internal.Pipeline(), nextLink, func(ctx context.Context) (*policy.Request, error) {
-				return client.listByNamespaceCreateRequest(ctx, resourceGroupName, namespaceName, options)
-			}, nil)
-			if err != nil {
-				return ApplicationGroupClientListByNamespaceResponse{}, err
-			}
-			return client.listByNamespaceHandleResponse(resp)
-		},
-		Tracer: client.internal.Tracer(),
-	})
-}
-
-// listByNamespaceCreateRequest creates the ListByNamespace request.
-func (client *ApplicationGroupClient) listByNamespaceCreateRequest(ctx context.Context, resourceGroupName string, namespaceName string, options *ApplicationGroupClientListByNamespaceOptions) (*policy.Request, error) {
-	urlPath := "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups"
-	if resourceGroupName == "" {
-		return nil, errors.New("parameter resourceGroupName cannot be empty")
-	}
-	urlPath = strings.ReplaceAll(urlPath, "{resourceGroupName}", url.PathEscape(resourceGroupName))
-	if namespaceName == "" {
-		return nil, errors.New("parameter namespaceName cannot be empty")
-	}
-	urlPath = strings.ReplaceAll(urlPath, "{namespaceName}", url.PathEscape(namespaceName))
-	if client.subscriptionID == "" {
-		return nil, errors.New("parameter client.subscriptionID cannot be empty")
-	}
-	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(client.subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.internal.Endpoint(), urlPath))
-	if err != nil {
-		return nil, err
-	}
-	reqQP := req.Raw().URL.Query()
-	reqQP.Set("api-version", "2022-10-01-preview")
-	req.Raw().URL.RawQuery = reqQP.Encode()
-	req.Raw().Header["Accept"] = []string{"application/json"}
-	return req, nil
-}
-
-// listByNamespaceHandleResponse handles the ListByNamespace response.
-func (client *ApplicationGroupClient) listByNamespaceHandleResponse(resp *http.Response) (ApplicationGroupClientListByNamespaceResponse, error) {
-	result := ApplicationGroupClientListByNamespaceResponse{}
-	if err := runtime.UnmarshalAsJSON(resp, &result.ApplicationGroupListResult); err != nil {
-		return ApplicationGroupClientListByNamespaceResponse{}, err
 	}
 	return result, nil
 }

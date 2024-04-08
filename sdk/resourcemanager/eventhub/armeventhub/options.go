@@ -24,12 +24,6 @@ type ApplicationGroupClientGetOptions struct {
 	// placeholder for future optional parameters
 }
 
-// ApplicationGroupClientListByNamespaceOptions contains the optional parameters for the ApplicationGroupClient.NewListByNamespacePager
-// method.
-type ApplicationGroupClientListByNamespaceOptions struct {
-	// placeholder for future optional parameters
-}
-
 // ClustersClientBeginCreateOrUpdateOptions contains the optional parameters for the ClustersClient.BeginCreateOrUpdate method.
 type ClustersClientBeginCreateOrUpdateOptions struct {
 	// Resumes the LRO from the provided token.
@@ -73,6 +67,11 @@ type ClustersClientListBySubscriptionOptions struct {
 
 // ClustersClientListNamespacesOptions contains the optional parameters for the ClustersClient.ListNamespaces method.
 type ClustersClientListNamespacesOptions struct {
+	// placeholder for future optional parameters
+}
+
+// ClustersClientTriggerUpgradePostOptions contains the optional parameters for the ClustersClient.TriggerUpgradePost method.
+type ClustersClientTriggerUpgradePostOptions struct {
 	// placeholder for future optional parameters
 }
 

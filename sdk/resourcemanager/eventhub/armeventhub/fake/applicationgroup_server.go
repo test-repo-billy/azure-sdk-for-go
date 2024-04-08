@@ -15,7 +15,6 @@ import (
 	azfake "github.com/Azure/azure-sdk-for-go/sdk/azcore/fake"
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/fake/server"
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/runtime"
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub"
 	"net/http"
 	"net/url"
@@ -35,27 +34,19 @@ type ApplicationGroupServer struct {
 	// Get is the fake for method ApplicationGroupClient.Get
 	// HTTP status codes to indicate success: http.StatusOK
 	Get func(ctx context.Context, resourceGroupName string, namespaceName string, applicationGroupName string, options *armeventhub.ApplicationGroupClientGetOptions) (resp azfake.Responder[armeventhub.ApplicationGroupClientGetResponse], errResp azfake.ErrorResponder)
-
-	// NewListByNamespacePager is the fake for method ApplicationGroupClient.NewListByNamespacePager
-	// HTTP status codes to indicate success: http.StatusOK
-	NewListByNamespacePager func(resourceGroupName string, namespaceName string, options *armeventhub.ApplicationGroupClientListByNamespaceOptions) (resp azfake.PagerResponder[armeventhub.ApplicationGroupClientListByNamespaceResponse])
 }
 
 // NewApplicationGroupServerTransport creates a new instance of ApplicationGroupServerTransport with the provided implementation.
 // The returned ApplicationGroupServerTransport instance is connected to an instance of armeventhub.ApplicationGroupClient via the
 // azcore.ClientOptions.Transporter field in the client's constructor parameters.
 func NewApplicationGroupServerTransport(srv *ApplicationGroupServer) *ApplicationGroupServerTransport {
-	return &ApplicationGroupServerTransport{
-		srv:                     srv,
-		newListByNamespacePager: newTracker[azfake.PagerResponder[armeventhub.ApplicationGroupClientListByNamespaceResponse]](),
-	}
+	return &ApplicationGroupServerTransport{srv: srv}
 }
 
 // ApplicationGroupServerTransport connects instances of armeventhub.ApplicationGroupClient to instances of ApplicationGroupServer.
 // Don't use this type directly, use NewApplicationGroupServerTransport instead.
 type ApplicationGroupServerTransport struct {
-	srv                     *ApplicationGroupServer
-	newListByNamespacePager *tracker[azfake.PagerResponder[armeventhub.ApplicationGroupClientListByNamespaceResponse]]
+	srv *ApplicationGroupServer
 }
 
 // Do implements the policy.Transporter interface for ApplicationGroupServerTransport.
@@ -76,8 +67,6 @@ func (a *ApplicationGroupServerTransport) Do(req *http.Request) (*http.Response,
 		resp, err = a.dispatchDelete(req)
 	case "ApplicationGroupClient.Get":
 		resp, err = a.dispatchGet(req)
-	case "ApplicationGroupClient.NewListByNamespacePager":
-		resp, err = a.dispatchNewListByNamespacePager(req)
 	default:
 		err = fmt.Errorf("unhandled API %s", method)
 	}
@@ -200,47 +189,6 @@ func (a *ApplicationGroupServerTransport) dispatchGet(req *http.Request) (*http.
 	resp, err := server.MarshalResponseAsJSON(respContent, server.GetResponse(respr).ApplicationGroup, req)
 	if err != nil {
 		return nil, err
-	}
-	return resp, nil
-}
-
-func (a *ApplicationGroupServerTransport) dispatchNewListByNamespacePager(req *http.Request) (*http.Response, error) {
-	if a.srv.NewListByNamespacePager == nil {
-		return nil, &nonRetriableError{errors.New("fake for method NewListByNamespacePager not implemented")}
-	}
-	newListByNamespacePager := a.newListByNamespacePager.get(req)
-	if newListByNamespacePager == nil {
-		const regexStr = `/subscriptions/(?P<subscriptionId>[!#&$-;=?-\[\]_a-zA-Z0-9~%@]+)/resourceGroups/(?P<resourceGroupName>[!#&$-;=?-\[\]_a-zA-Z0-9~%@]+)/providers/Microsoft\.EventHub/namespaces/(?P<namespaceName>[!#&$-;=?-\[\]_a-zA-Z0-9~%@]+)/applicationGroups`
-		regex := regexp.MustCompile(regexStr)
-		matches := regex.FindStringSubmatch(req.URL.EscapedPath())
-		if matches == nil || len(matches) < 3 {
-			return nil, fmt.Errorf("failed to parse path %s", req.URL.Path)
-		}
-		resourceGroupNameParam, err := url.PathUnescape(matches[regex.SubexpIndex("resourceGroupName")])
-		if err != nil {
-			return nil, err
-		}
-		namespaceNameParam, err := url.PathUnescape(matches[regex.SubexpIndex("namespaceName")])
-		if err != nil {
-			return nil, err
-		}
-		resp := a.srv.NewListByNamespacePager(resourceGroupNameParam, namespaceNameParam, nil)
-		newListByNamespacePager = &resp
-		a.newListByNamespacePager.add(req, newListByNamespacePager)
-		server.PagerResponderInjectNextLinks(newListByNamespacePager, req, func(page *armeventhub.ApplicationGroupClientListByNamespaceResponse, createLink func() string) {
-			page.NextLink = to.Ptr(createLink())
-		})
-	}
-	resp, err := server.PagerResponderNext(newListByNamespacePager, req)
-	if err != nil {
-		return nil, err
-	}
-	if !contains([]int{http.StatusOK}, resp.StatusCode) {
-		a.newListByNamespacePager.remove(req)
-		return nil, &nonRetriableError{fmt.Errorf("unexpected status code %d. acceptable values are http.StatusOK", resp.StatusCode)}
-	}
-	if !server.PagerResponderMore(newListByNamespacePager) {
-		a.newListByNamespacePager.remove(req)
 	}
 	return resp, nil
 }

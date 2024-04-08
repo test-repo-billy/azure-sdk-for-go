@@ -171,12 +171,6 @@ type PrivateLinkResourcesClientListByServiceOptions struct {
 	// placeholder for future optional parameters
 }
 
-// ServicesClientBeginCreateOrUpdateOptions contains the optional parameters for the ServicesClient.BeginCreateOrUpdate method.
-type ServicesClientBeginCreateOrUpdateOptions struct {
-	// Resumes the LRO from the provided token.
-	ResumeToken string
-}
-
 // ServicesClientBeginDeleteOptions contains the optional parameters for the ServicesClient.BeginDelete method.
 type ServicesClientBeginDeleteOptions struct {
 	// Resumes the LRO from the provided token.
